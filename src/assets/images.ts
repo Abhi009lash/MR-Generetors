@@ -9,6 +9,7 @@ import greaves57Img from './image_from_https_mrgenerators.com_wp_content_uploads
 import mrGeneratorsLogo from './MR-Generators_Logo-R_i2_Final_PNG-1024x642.png';
 import screenImg from './screen.png';
 import greavesCutoutImg from './greaves_cpcb_iv_cutout.png';
+import leypowerGenImg from './leypower_generator.png';
 
 export {
   aboutEcosystemImg,
@@ -22,4 +23,5 @@ export {
   mrGeneratorsLogo,
   screenImg,
   greavesCutoutImg,
+  leypowerGenImg,
 };

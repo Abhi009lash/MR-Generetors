@@ -8,7 +8,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'contact') => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -19,14 +19,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'contact') => {
+  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'contact') => {
     onClose();
     if (page && onNavigate) {
       onNavigate(page);
     }
   };
 
-  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'contact'; href?: string }> = [
+  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'contact'; href?: string }> = [
     { label: 'Home', page: 'home' },
     { label: 'About Us', page: 'about' },
     { label: 'Sales & Products', page: 'products' },

@@ -114,10 +114,10 @@ export const BRANDS_DATA: BrandItem[] = [
   },
   {
     id: 'ashok-leyland',
-    name: 'Ashok Leyland LEYPOWER',
+    name: 'Ashok Leyland',
     kVaRange: '10 - 2250 kVA',
     description:
-      'LEYPOWER delivers state-of-the-art engine, alternator and controller integration for demanding continuous loads.',
+      'State-of-the-art engine, alternator and controller integration for demanding continuous loads.',
   },
   {
     id: 'mahindra',

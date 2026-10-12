@@ -10,11 +10,13 @@ import { SalesFastTrackQuoteSection } from './SalesFastTrackQuoteSection';
 interface SalesProductsPageProps {
   onOpenQuoteModal: (modelName?: string, capacity?: string) => void;
   onOpenBrochureModal: () => void;
+  onNavigateToLeypower?: () => void;
 }
 
 export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
   onOpenQuoteModal,
   onOpenBrochureModal,
+  onNavigateToLeypower,
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     kvaRange: 'all',
@@ -64,6 +66,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
         onSelectBrand={(brandName, kvaRange) =>
           onOpenQuoteModal(`${brandName} DG Set`, kvaRange)
         }
+        onNavigateToLeypower={onNavigateToLeypower}
       />
 
       {/* 6. Turnkey 4-Step Engineering Walkthrough */}

@@ -3,6 +3,7 @@ import { ArrowRight, Check } from 'lucide-react';
 
 interface MultiBrandCatalogGridProps {
   onSelectBrand: (brandName: string, kvaRange: string) => void;
+  onNavigateToLeypower?: () => void;
 }
 
 interface BrandCardItem {
@@ -42,8 +43,8 @@ const BRANDS_LIST: BrandCardItem[] = [
     spec2: 'Super-Silent Enclosure',
   },
   {
-    id: 'leypower',
-    name: 'LEYPOWER',
+    id: 'ashok-leyland',
+    name: 'ASHOK LEYLAND',
     kvaRange: '10 - 2250 kVA',
     description: 'State-of-the-art engine, alternator and controller technology offering fully integrated power systems at low cost of overall ownership.',
     spec1: 'High Fuel Mileage Rate',
@@ -87,6 +88,7 @@ const BRANDS_LIST: BrandCardItem[] = [
 
 export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
   onSelectBrand,
+  onNavigateToLeypower,
 }) => {
   return (
     <section className="bg-[#EFF4FF] py-14 border-t border-[#D6E4FF] select-none">
@@ -106,62 +108,85 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
 
         {/* 8-Brand Technical Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {BRANDS_LIST.map((b) => (
-            <div
-              key={b.id}
-              className="bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#385BAB] hover:shadow-sm transition-all"
-            >
-              <div className="space-y-3">
-                {/* Brand Title + Range Badge */}
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-rubik font-bold text-lg text-[#00163D] uppercase truncate">
-                    {b.name}
-                  </h3>
-                  <span
-                    className={`px-2 py-0.5 rounded-[2px] font-karla font-bold text-[10px] uppercase tracking-wider shrink-0 ${
-                      b.isSpecialBadge
-                        ? 'bg-[#D32F2F] text-white'
-                        : 'bg-[#E5EEFF] text-[#00163D]'
-                    }`}
-                  >
-                    {b.isSpecialBadge ? b.specialBadgeText : b.kvaRange}
+          {BRANDS_LIST.map((b) => {
+            const isAshokLeyland =
+              b.id === 'ashok-leyland' ||
+              b.id === 'leypower' ||
+              b.name === 'ASHOK LEYLAND';
+
+            return (
+              <div
+                key={b.id}
+                onClick={() => {
+                  if (isAshokLeyland && onNavigateToLeypower) {
+                    onNavigateToLeypower();
+                  }
+                }}
+                className={`bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 transition-all ${
+                  isAshokLeyland
+                    ? 'cursor-pointer hover:border-[#00163D] hover:shadow-md ring-1 ring-[#385BAB]/10'
+                    : 'hover:border-[#385BAB] hover:shadow-sm'
+                }`}
+              >
+                <div className="space-y-3">
+                  {/* Brand Title + Range Badge */}
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-rubik font-bold text-lg text-[#00163D] uppercase truncate">
+                      {b.name}
+                    </h3>
+                    <span
+                      className={`px-2 py-0.5 rounded-[2px] font-karla font-bold text-[10px] uppercase tracking-wider shrink-0 ${
+                        b.isSpecialBadge
+                          ? 'bg-[#D32F2F] text-white'
+                          : 'bg-[#E5EEFF] text-[#00163D]'
+                      }`}
+                    >
+                      {b.isSpecialBadge ? b.specialBadgeText : b.kvaRange}
+                    </span>
+                  </div>
+
+                  <p className="font-karla text-xs text-slate-600 leading-relaxed line-clamp-3">
+                    {b.description}
+                  </p>
+
+                  {/* 2 Specs Box */}
+                  <div className="p-2.5 bg-[#EFF4FF] rounded-[2px] space-y-1 font-karla text-xs text-slate-700">
+                    <div className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#385BAB] shrink-0" />
+                      <span className="truncate">{b.spec1}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#385BAB] shrink-0" />
+                      <span className="truncate">{b.spec2}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Action */}
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <span className="font-karla font-bold text-xs text-[#00163D]">
+                    {b.kvaRange}
                   </span>
-                </div>
 
-                <p className="font-karla text-xs text-slate-600 leading-relaxed line-clamp-3">
-                  {b.description}
-                </p>
-
-                {/* 2 Specs Box */}
-                <div className="p-2.5 bg-[#EFF4FF] rounded-[2px] space-y-1 font-karla text-xs text-slate-700">
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#385BAB] shrink-0" />
-                    <span className="truncate">{b.spec1}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#385BAB] shrink-0" />
-                    <span className="truncate">{b.spec2}</span>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isAshokLeyland && onNavigateToLeypower) {
+                        onNavigateToLeypower();
+                      } else {
+                        onSelectBrand(b.name, b.kvaRange);
+                      }
+                    }}
+                    className="font-karla font-bold text-xs uppercase tracking-wider text-[#385BAB] hover:text-[#00163D] flex items-center gap-1 transition-colors cursor-pointer"
+                  >
+                    <span>VIEW LINEUP</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               </div>
-
-              {/* Bottom Action */}
-              <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                <span className="font-karla font-bold text-xs text-[#00163D]">
-                  {b.kvaRange}
-                </span>
-
-                <button
-                  type="button"
-                  onClick={() => onSelectBrand(b.name, b.kvaRange)}
-                  className="font-karla font-bold text-xs uppercase tracking-wider text-[#385BAB] hover:text-[#00163D] flex items-center gap-1 transition-colors cursor-pointer"
-                >
-                  <span>VIEW LINEUP</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

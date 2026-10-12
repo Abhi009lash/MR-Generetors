@@ -12,6 +12,7 @@ import { TestimonialsSection } from './features/testimonials/TestimonialsSection
 import { ContactSection } from './features/contact/ContactSection';
 import { ContactPage } from './features/contact/ContactPage';
 import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
+import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -20,13 +21,13 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'contact'>('products');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'contact'>('leypower');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
-  const handleNavigate = (page: 'home' | 'about' | 'products' | 'contact') => {
+  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'contact') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -45,6 +46,10 @@ export const App: React.FC = () => {
   };
 
   const handleSelectBrand = (brand: BrandItem) => {
+    if (brand.id === 'leypower' || brand.name.toLowerCase().includes('leypower')) {
+      handleNavigate('leypower');
+      return;
+    }
     setSelectedProduct(null);
     setSelectedCapacity(brand.kVaRange);
     setIsQuoteModalOpen(true);
@@ -83,6 +88,15 @@ export const App: React.FC = () => {
         ) : currentPage === 'products' ? (
           /* Dedicated Sales & Products Page matching Figma specifications */
           <SalesProductsPage
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+            onNavigateToLeypower={() => handleNavigate('leypower')}
+          />
+        ) : currentPage === 'leypower' ? (
+          /* Dedicated Ashok Leyland LEYPOWER Generators Page */
+          <LeypowerPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateProducts={() => handleNavigate('products')}
             onOpenQuoteModal={handleOpenQuoteModal}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
           />

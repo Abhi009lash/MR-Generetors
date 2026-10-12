@@ -5,8 +5,8 @@ import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about' | 'products' | 'contact';
-  onNavigate: (page: 'home' | 'about' | 'products' | 'contact') => void;
+  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
