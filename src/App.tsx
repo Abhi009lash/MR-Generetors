@@ -3,6 +3,7 @@ import { TopBar } from './features/layout/TopBar';
 import { Navbar } from './features/layout/Navbar';
 import { HeroSection } from './features/hero/HeroSection';
 import { CorporateProfile } from './features/about/CorporateProfile';
+import { AboutPage } from './features/about/AboutPage';
 import { ProductsSection } from './features/products/ProductsSection';
 import { BrandsSection } from './features/brands/BrandsSection';
 import { WhyChooseUsSection } from './features/why-us/WhyChooseUsSection';
@@ -17,6 +18,7 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('about');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -57,47 +59,55 @@ export const App: React.FC = () => {
       <TopBar onOpenBrochureModal={() => setIsBrochureModalOpen(true)} />
 
       {/* Main sticky navigation header */}
-      <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
+      <Navbar
+        currentPage={currentPage}
+        onNavigate={(page) => setCurrentPage(page)}
+        onOpenQuoteModal={() => handleOpenQuoteModal()}
+      />
 
       <main className="flex-1">
-        {/* Unified Hero Section with embedded Sizing Finder and Stats */}
-        <HeroSection
-          onOpenQuoteModal={() => handleOpenQuoteModal()}
-          onRequirementSelect={handleRequirementSelect}
-        />
+        {currentPage === 'about' ? (
+          /* Dedicated About Us Page matching Figma screen 12474d8ecf774619ba81f220b3a50d27 */
+          <AboutPage
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+            onOpenQuoteModal={() => handleOpenQuoteModal()}
+            onNavigateHome={() => setCurrentPage('home')}
+          />
+        ) : (
+          /* Home Screen */
+          <>
+            <HeroSection
+              onOpenQuoteModal={() => handleOpenQuoteModal()}
+              onRequirementSelect={handleRequirementSelect}
+            />
 
-        {/* Corporate Profile & Circular Ecosystem */}
-        <CorporateProfile
-          onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-          onOpenQuoteModal={() => handleOpenQuoteModal()}
-        />
+            <CorporateProfile
+              onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+              onOpenQuoteModal={() => handleOpenQuoteModal()}
+            />
 
-        {/* Greaves Diesel Generators Showcase Grid */}
-        <ProductsSection
-          onSelectProduct={handleSelectProduct}
-          onOpenTurnkeyModal={() =>
-            handleOpenQuoteModal('Turnkey Substation & DG Sets', '1000 - 2000 kVA')
-          }
-        />
+            <ProductsSection
+              onSelectProduct={handleSelectProduct}
+              onOpenTurnkeyModal={() =>
+                handleOpenQuoteModal('Turnkey Substation & DG Sets', '1000 - 2000 kVA')
+              }
+            />
 
-        {/* Multi-Brand Sales & Spares Support */}
-        <BrandsSection onSelectBrand={handleSelectBrand} />
+            <BrandsSection onSelectBrand={handleSelectBrand} />
 
-        {/* Enterprise Advantages / Why Choose Us */}
-        <WhyChooseUsSection />
+            <WhyChooseUsSection />
 
-        {/* Enterprise Clients Grid */}
-        <EnterpriseClientsSection />
+            <EnterpriseClientsSection />
 
-        {/* Testimonials & Reviews */}
-        <TestimonialsSection />
+            <TestimonialsSection />
 
-        {/* Emergency Contacts & Interactive Quote Form */}
-        <ContactSection initialCapacity={selectedCapacity} />
+            <ContactSection initialCapacity={selectedCapacity} />
+          </>
+        )}
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onNavigate={(page) => setCurrentPage(page)} />
 
       {/* Global Modals */}
       <QuoteModal

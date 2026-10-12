@@ -5,9 +5,15 @@ import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
+  currentPage: 'home' | 'about';
+  onNavigate: (page: 'home' | 'about') => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenQuoteModal,
+  currentPage,
+  onNavigate,
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -15,7 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
       <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-slate-100 select-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
           {/* Logo with subtitle */}
-          <a href="#top" className="flex items-center gap-3 group">
+          <button
+            type="button"
+            onClick={() => onNavigate('home')}
+            className="flex items-center gap-3 group cursor-pointer text-left"
+          >
             <img
               src={mrGeneratorsLogo}
               alt="M.R Generators Logo"
@@ -29,43 +39,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                 POWER SYSTEMS HYDERABAD
               </span>
             </div>
-          </a>
+          </button>
 
           {/* Navigation Links */}
           <nav className="hidden lg:flex items-center gap-6">
-            <a
-              href="#top"
-              className="px-4 py-1.5 rounded-md bg-[#E8F0FE] text-[#1D4ED8] font-karla font-semibold text-sm transition-colors"
+            <button
+              type="button"
+              onClick={() => onNavigate('home')}
+              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'home'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
             >
               Home
-            </a>
-            <a
-              href="#about"
-              className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigate('about')}
+              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'about'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
             >
               About Us
-            </a>
+            </button>
+
             <div className="relative group">
               <button
                 type="button"
                 className="flex items-center gap-1 px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors cursor-pointer"
               >
-                <span>Business Verticals</span>
+                <span>Sales &amp; Products</span>
                 <ChevronDown className="w-3.5 h-3.5" />
               </button>
             </div>
+
             <a
-              href="#brands"
+              href="#why-us"
               className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
             >
-              Brands
+              Services &amp; AMC
             </a>
+
             <a
               href="#testimonials"
               className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
             >
-              Clients
+              Clients &amp; Portfolio
             </a>
+
             <a
               href="#contact"
               className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
@@ -74,24 +99,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
             </a>
           </nav>
 
-          {/* Right Action: Get a Quote & User Profile */}
+          {/* Right Action: Get Instant Quote & User Profile */}
           <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={onOpenQuoteModal}
-              className="h-10 px-5 bg-[#00163D] hover:bg-[#00225A] text-white font-karla font-bold text-xs uppercase tracking-wider rounded-md flex items-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer"
+              className="h-10 px-5 bg-[#0F2B5C] hover:bg-[#00163D] text-white font-karla font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer"
             >
               <FileText className="w-4 h-4" />
-              <span>GET A QUOTE</span>
+              <span>GET INSTANT QUOTE</span>
             </button>
 
             <button
               type="button"
               onClick={onOpenQuoteModal}
-              className="w-10 h-10 rounded-full bg-[#00163D] hover:bg-[#00225A] text-white flex items-center justify-center transition-colors shadow-sm cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#00163D] hover:bg-[#0F2B5C] text-white flex items-center justify-center transition-colors shadow-sm cursor-pointer"
               aria-label="User Account Profile"
             >
-              <User className="w-5 h-5" />
+              <User className="w-4 h-4" />
             </button>
 
             <button
