@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -96,72 +96,47 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h4 className="font-rubik font-semibold text-lg uppercase tracking-tight text-white">
               QUICK LINKS
             </h4>
-            <ul className="space-y-2 font-karla text-xs sm:text-sm text-[#DFE9FB]">
+            <ul className="space-y-1.5 font-karla text-xs sm:text-sm text-[#DFE9FB]">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate && onNavigate('home')}
-                  className="hover:text-white transition-colors cursor-pointer text-left"
-                >
+                <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Home
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate && onNavigate('about')}
-                  className="hover:text-white transition-colors cursor-pointer text-left"
-                >
+                <button type="button" onClick={() => onNavigate?.('about')} className="hover:text-white transition-colors cursor-pointer text-left">
                   About Us
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate && onNavigate('products')}
-                  className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white"
-                >
+                <button type="button" onClick={() => onNavigate?.('products')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">
                   Sales &amp; Products
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate && onNavigate('leypower')}
-                  className="hover:text-white transition-colors cursor-pointer text-left text-[#D97706] font-bold"
-                >
+                <button type="button" onClick={() => onNavigate?.('leypower')} className="hover:text-white transition-colors cursor-pointer text-left text-[#D97706] font-bold">
                   Ashok Leyland LEYPOWER
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate?.('services')}
-                  className="hover:text-white transition-colors cursor-pointer text-left"
-                >
+                <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Services &amp; Maintenance
                 </button>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate?.('blog')}
-                  className="hover:text-white transition-colors cursor-pointer text-left"
-                >
+                <button type="button" onClick={() => onNavigate?.('spares')} className="hover:text-white transition-colors cursor-pointer text-left text-[#FBBF24] font-bold">
+                  Spares &amp; Accessories
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('blog')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Blog &amp; Power Insights
                 </button>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">
-                  Clients &amp; Portfolio
-                </a>
+                <a href="#testimonials" className="hover:text-white transition-colors">Clients &amp; Portfolio</a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate && onNavigate('contact')}
-                  className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white"
-                >
+                <button type="button" onClick={() => onNavigate?.('contact')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">
                   Contact Us
                 </button>
               </li>

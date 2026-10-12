@@ -14,6 +14,17 @@ import serviceVanImg from './service_diagnostic_van.png';
 import sparesWarehouseImg from './spares_warehouse_depot.jpg';
 import tataDgHeroImg from './tata_dg_set_hero.png';
 
+// Generated Spares & Accessories images
+import sparesHeroEngineImg from './spares_hero_engine_1791832306228.jpg';
+import sparesFiltrationImg from './spares_filtration_1791832326208.jpg';
+import sparesCoolingImg from './spares_cooling_1791832347486.jpg';
+import sparesFuelInjectImg from './spares_fuel_inject_1791832381872.jpg';
+import sparesElectricalAvrImg from './spares_electrical_avr_1791832403022.jpg';
+import sparesAmfPanelsImg from './spares_amf_panels_1791832427040.jpg';
+import sparesStartingSysImg from './spares_starting_sys_1791832451985.jpg';
+import sparesOverhaulKitImg from './spares_overhaul_kit_1791832479896.jpg';
+import sparesCanopyExhaustImg from './spares_canopy_exhaust_1791832507687.jpg';
+
 export {
   aboutEcosystemImg,
   generators1Img,
@@ -30,4 +41,13 @@ export {
   serviceVanImg,
   sparesWarehouseImg,
   tataDgHeroImg,
+  sparesHeroEngineImg,
+  sparesFiltrationImg,
+  sparesCoolingImg,
+  sparesFuelInjectImg,
+  sparesElectricalAvrImg,
+  sparesAmfPanelsImg,
+  sparesStartingSysImg,
+  sparesOverhaulKitImg,
+  sparesCanopyExhaustImg,
 };

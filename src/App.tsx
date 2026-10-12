@@ -15,6 +15,7 @@ import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { TataGensetsPage } from './features/tata/TataGensetsPage';
 import { ServicesPage } from './features/services/ServicesPage';
+import { SparesPage } from './features/spares/SparesPage';
 import { BlogPage } from './features/blog/BlogPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
@@ -24,13 +25,13 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact'>('home');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
-  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact') => {
+  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -122,6 +123,13 @@ export const App: React.FC = () => {
             onNavigate={handleNavigate}
             onOpenConsultationModal={() => handleOpenQuoteModal()}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+          />
+        ) : currentPage === 'spares' ? (
+          /* Dedicated Spares & Accessories Page matching Figma design */
+          <SparesPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateServices={() => handleNavigate('services')}
+            onOpenQuoteModal={handleOpenQuoteModal}
           />
         ) : currentPage === 'blog' ? (
           /* Dedicated Blog & Power Insights Page matching Figma design */

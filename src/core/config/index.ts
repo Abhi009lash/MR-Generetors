@@ -4,6 +4,7 @@ export const APP_CONFIG = {
   establishedYear: 2014,
   phonePrimary: '8977778811',
   phoneSecondary: '9014902266',
+  phoneLandline: '040-48547105',
   email: 'info@mrgenerators.com',
   address: {
     line1: 'Plot No. 12, IDA Mallapur',
