@@ -5,6 +5,7 @@ interface MultiBrandCatalogGridProps {
   onSelectBrand: (brandName: string, kvaRange: string) => void;
   onNavigateToLeypower?: () => void;
   onNavigateToTata?: () => void;
+  onNavigateToCummins?: () => void;
 }
 
 interface BrandCardItem {
@@ -91,6 +92,7 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
   onSelectBrand,
   onNavigateToLeypower,
   onNavigateToTata,
+  onNavigateToCummins,
 }) => {
   return (
     <section className="bg-[#EFF4FF] py-14 border-t border-[#D6E4FF] select-none">
@@ -117,7 +119,8 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
               b.name === 'ASHOK LEYLAND';
 
             const isTata = b.id === 'tata' || b.name === 'TATA';
-            const isInteractive = isAshokLeyland || isTata;
+            const isCummins = b.id === 'cummins' || b.name === 'CUMMINS';
+            const isInteractive = isAshokLeyland || isTata || isCummins;
 
             return (
               <div
@@ -127,6 +130,8 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                     onNavigateToTata();
                   } else if (isAshokLeyland && onNavigateToLeypower) {
                     onNavigateToLeypower();
+                  } else if (isCummins && onNavigateToCummins) {
+                    onNavigateToCummins();
                   }
                 }}
                 className={`bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 transition-all ${
@@ -178,15 +183,17 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                   <button
                     type="button"
                     onClick={(e) => {
-                      e.stopPropagation();
-                      if (isTata && onNavigateToTata) {
-                        onNavigateToTata();
-                      } else if (isAshokLeyland && onNavigateToLeypower) {
-                        onNavigateToLeypower();
-                      } else {
-                        onSelectBrand(b.name, b.kvaRange);
-                      }
-                    }}
+                       e.stopPropagation();
+                       if (isTata && onNavigateToTata) {
+                         onNavigateToTata();
+                       } else if (isAshokLeyland && onNavigateToLeypower) {
+                         onNavigateToLeypower();
+                       } else if (isCummins && onNavigateToCummins) {
+                         onNavigateToCummins();
+                       } else {
+                         onSelectBrand(b.name, b.kvaRange);
+                       }
+                     }}
                     className="font-karla font-bold text-xs uppercase tracking-wider text-[#385BAB] hover:text-[#00163D] flex items-center gap-1 transition-colors cursor-pointer"
                   >
                     <span>VIEW LINEUP</span>

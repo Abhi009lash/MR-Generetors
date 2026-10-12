@@ -8,7 +8,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -19,23 +19,26 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => {
+  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => {
     onClose();
     if (page && onNavigate) {
       onNavigate(page);
     }
   };
 
-  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact'; href?: string }> = [
+  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact'; href?: string }> = [
     { label: 'Home', page: 'home' },
     { label: 'About Us', page: 'about' },
     { label: 'Sales & Products', page: 'products' },
+    { label: 'Cummins DG Sets', page: 'cummins' },
+    { label: 'Ashok Leyland LEYPOWER', page: 'leypower' },
+    { label: 'Tata Motors DG Sets', page: 'tata' },
     { label: 'Services & AMC', page: 'services' },
     { label: 'Spares & Accessories', page: 'spares' },
+    { label: 'Generator Rentals', page: 'rentals' },
     { label: 'Blog & Insights', page: 'blog' },
     { label: 'Contact Us & Sizing', page: 'contact' },
     { label: 'Greaves DG Sets', href: '#products' },
-    { label: 'Multi-Brand Portfolio', href: '#brands' },
     { label: 'Why Choose Us', href: '#why-us' },
     { label: 'Clients & Reviews', href: '#testimonials' },
   ];

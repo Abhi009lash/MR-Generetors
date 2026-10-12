@@ -14,9 +14,11 @@ import { ContactPage } from './features/contact/ContactPage';
 import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { TataGensetsPage } from './features/tata/TataGensetsPage';
+import { CumminsPage } from './features/cummins/CumminsPage';
 import { ServicesPage } from './features/services/ServicesPage';
 import { SparesPage } from './features/spares/SparesPage';
 import { BlogPage } from './features/blog/BlogPage';
+import { RentalsPage } from './features/rentals/RentalsPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -24,14 +26,27 @@ import type { ProductItem, BrandItem, SizingRequirement } from './types';
 import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
+export type PageId =
+  | 'home'
+  | 'about'
+  | 'products'
+  | 'leypower'
+  | 'tata'
+  | 'cummins'
+  | 'services'
+  | 'spares'
+  | 'rentals'
+  | 'blog'
+  | 'contact';
+
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
-  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => {
+  const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -56,6 +71,10 @@ export const App: React.FC = () => {
     }
     if (brand.id === 'tata' || brand.name.toLowerCase().includes('tata')) {
       handleNavigate('tata');
+      return;
+    }
+    if (brand.id === 'cummins' || brand.name.toLowerCase().includes('cummins')) {
+      handleNavigate('cummins');
       return;
     }
     setSelectedProduct(null);
@@ -100,6 +119,7 @@ export const App: React.FC = () => {
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
             onNavigateToLeypower={() => handleNavigate('leypower')}
             onNavigateToTata={() => handleNavigate('tata')}
+            onNavigateToCummins={() => handleNavigate('cummins')}
           />
         ) : currentPage === 'leypower' ? (
           /* Dedicated Ashok Leyland LEYPOWER Generators Page */
@@ -117,6 +137,14 @@ export const App: React.FC = () => {
             onOpenQuoteModal={handleOpenQuoteModal}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
           />
+        ) : currentPage === 'cummins' ? (
+          /* Dedicated Cummins Diesel Generators Page */
+          <CumminsPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateProducts={() => handleNavigate('products')}
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+          />
         ) : currentPage === 'services' ? (
           /* Dedicated Services & Maintenance Page */
           <ServicesPage
@@ -129,6 +157,12 @@ export const App: React.FC = () => {
           <SparesPage
             onNavigateHome={() => handleNavigate('home')}
             onNavigateServices={() => handleNavigate('services')}
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        ) : currentPage === 'rentals' ? (
+          /* Dedicated Generator Rentals Page matching Figma design */
+          <RentalsPage
+            onNavigateHome={() => handleNavigate('home')}
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         ) : currentPage === 'blog' ? (

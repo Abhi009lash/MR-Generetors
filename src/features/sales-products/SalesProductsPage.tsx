@@ -12,6 +12,7 @@ interface SalesProductsPageProps {
   onOpenBrochureModal: () => void;
   onNavigateToLeypower?: () => void;
   onNavigateToTata?: () => void;
+  onNavigateToCummins?: () => void;
 }
 
 export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
@@ -19,6 +20,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
   onOpenBrochureModal,
   onNavigateToLeypower,
   onNavigateToTata,
+  onNavigateToCummins,
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     kvaRange: 'all',
@@ -65,6 +67,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
         }
         onNavigateToLeypower={onNavigateToLeypower}
         onNavigateToTata={onNavigateToTata}
+        onNavigateToCummins={onNavigateToCummins}
       />
 
       {/* 6. Turnkey 4-Step Engineering Walkthrough */}

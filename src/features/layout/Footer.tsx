@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'spares' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -118,6 +118,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </button>
               </li>
               <li>
+                <button type="button" onClick={() => onNavigate?.('cummins')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-400 font-bold">
+                  Cummins Diesel Generators
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('tata')} className="hover:text-white transition-colors cursor-pointer text-left text-blue-400 font-bold">
+                  Tata Diesel Generators
+                </button>
+              </li>
+              <li>
                 <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Services &amp; Maintenance
                 </button>
@@ -125,6 +135,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button type="button" onClick={() => onNavigate?.('spares')} className="hover:text-white transition-colors cursor-pointer text-left text-[#FBBF24] font-bold">
                   Spares &amp; Accessories
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('rentals')} className="hover:text-white transition-colors cursor-pointer text-left text-sky-400 font-bold">
+                  Generator Rentals
                 </button>
               </li>
               <li>

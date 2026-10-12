@@ -25,6 +25,14 @@ import sparesStartingSysImg from './spares_starting_sys_1791832451985.jpg';
 import sparesOverhaulKitImg from './spares_overhaul_kit_1791832479896.jpg';
 import sparesCanopyExhaustImg from './spares_canopy_exhaust_1791832507687.jpg';
 
+// Generated Generator Rental images
+import rentalHeroNightImg from './rental_hero_night_1791834146768.jpg';
+import rentalTrailerCompactImg from './rental_trailer_compact_1791834183223.jpg';
+import rentalCommercialSkidImg from './rental_commercial_skid_1791834218650.jpg';
+import rentalIndustrialHeavyImg from './rental_industrial_heavy_1791834250067.jpg';
+
+import cumminsDgHeroImg from './cummins_dg_set_hero.png';
+
 export {
   aboutEcosystemImg,
   generators1Img,
@@ -41,6 +49,7 @@ export {
   serviceVanImg,
   sparesWarehouseImg,
   tataDgHeroImg,
+  cumminsDgHeroImg,
   sparesHeroEngineImg,
   sparesFiltrationImg,
   sparesCoolingImg,
@@ -50,4 +59,8 @@ export {
   sparesStartingSysImg,
   sparesOverhaulKitImg,
   sparesCanopyExhaustImg,
+  rentalHeroNightImg,
+  rentalTrailerCompactImg,
+  rentalCommercialSkidImg,
+  rentalIndustrialHeavyImg,
 };
