@@ -1,49 +1,19 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
 
 interface CumminsBreadcrumbBarProps {
-  onNavigateHome: () => void;
-  onNavigateProducts: () => void;
+  onNavigateHome?: () => void;
+  onNavigateProducts?: () => void;
   activeFilter?: string;
   onSelectFilter?: (category: 'all' | 'commercial' | 'industrial' | 'high-horsepower') => void;
 }
 
 export const CumminsBreadcrumbBar: React.FC<CumminsBreadcrumbBarProps> = ({
-  onNavigateHome,
-  onNavigateProducts,
   activeFilter = 'all',
   onSelectFilter,
 }) => {
   return (
-    <div className="bg-[#F8F9FF] border-b border-slate-200 select-none">
-      {/* Top Breadcrumb Path */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3">
-        <div className="flex items-center gap-1.5 text-xs font-karla text-slate-500">
-          <button
-            type="button"
-            onClick={onNavigateHome}
-            className="hover:text-[#00163D] transition-colors cursor-pointer font-bold uppercase"
-          >
-            HOME
-          </button>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
-          <button
-            type="button"
-            onClick={onNavigateProducts}
-            className="hover:text-[#00163D] transition-colors cursor-pointer font-bold uppercase"
-          >
-            PRODUCTS
-          </button>
-          <ChevronRight className="w-3 h-3 text-slate-400" />
-          <span className="font-bold text-[#00163D] uppercase">
-            CUMMINS DIESEL GENERATORS
-          </span>
-        </div>
-      </div>
-
-      {/* Sub-Ribbon with Fast Categories */}
-      <div className="bg-white border-t border-slate-200/80 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3">
+    <div className="bg-white border-b border-slate-200 select-none py-2.5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="font-karla text-xs text-slate-600 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>Factory direct supply, testing and commissioning across Telangana &amp; Andhra Pradesh</span>

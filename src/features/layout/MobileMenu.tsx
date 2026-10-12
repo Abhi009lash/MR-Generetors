@@ -8,7 +8,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -19,22 +19,26 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => {
+  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => {
     onClose();
     if (page && onNavigate) {
       onNavigate(page);
     }
   };
 
-  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact'; href?: string }> = [
+  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact'; href?: string }> = [
     { label: 'Home', page: 'home' },
     { label: 'About Us', page: 'about' },
     { label: 'Sales & Products', page: 'products' },
+    { label: 'Mahindra Powerol DG Sets', page: 'mahindra' },
+    { label: 'Kirloskar KOEL Green', page: 'kirloskar' },
+    { label: 'Caterpillar (CAT®)', page: 'caterpillar' },
     { label: 'Eicher DG Sets', page: 'eicher' },
     { label: 'Cummins DG Sets', page: 'cummins' },
     { label: 'Ashok Leyland LEYPOWER', page: 'leypower' },
     { label: 'Tata Motors DG Sets', page: 'tata' },
-    { label: 'Services & AMC', page: 'services' },
+    { label: 'Services & Maintenance', page: 'services' },
+    { label: 'Generator AMC Services', page: 'amc' },
     { label: 'Spares & Accessories', page: 'spares' },
     { label: 'Generator Rentals', page: 'rentals' },
     { label: 'Blog & Insights', page: 'blog' },

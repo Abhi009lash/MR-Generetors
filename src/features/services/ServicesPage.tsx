@@ -9,9 +9,10 @@ import { ServicesOemBrandsSection } from './ServicesOemBrandsSection';
 import { ServicesWarehouseSection } from './ServicesWarehouseSection';
 import { ServicesBookingHotlinePanel } from './ServicesBookingHotlinePanel';
 import { ServicesBookingForm } from './ServicesBookingForm';
+import type { PageId } from '../../App';
 
 interface ServicesPageProps {
-  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'services' | 'contact') => void;
+  onNavigate: (page: PageId) => void;
   onOpenConsultationModal?: () => void;
   onOpenBrochureModal?: () => void;
 }

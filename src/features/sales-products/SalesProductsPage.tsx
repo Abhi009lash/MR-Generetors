@@ -14,6 +14,9 @@ interface SalesProductsPageProps {
   onNavigateToTata?: () => void;
   onNavigateToCummins?: () => void;
   onNavigateToEicher?: () => void;
+  onNavigateToMahindra?: () => void;
+  onNavigateToKirloskar?: () => void;
+  onNavigateToCaterpillar?: () => void;
 }
 
 export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
@@ -23,6 +26,9 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
   onNavigateToTata,
   onNavigateToCummins,
   onNavigateToEicher,
+  onNavigateToMahindra,
+  onNavigateToKirloskar,
+  onNavigateToCaterpillar,
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     kvaRange: 'all',
@@ -71,6 +77,9 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
         onNavigateToTata={onNavigateToTata}
         onNavigateToCummins={onNavigateToCummins}
         onNavigateToEicher={onNavigateToEicher}
+        onNavigateToMahindra={onNavigateToMahindra}
+        onNavigateToKirloskar={onNavigateToKirloskar}
+        onNavigateToCaterpillar={onNavigateToCaterpillar}
       />
 
       {/* 6. Turnkey 4-Step Engineering Walkthrough */}

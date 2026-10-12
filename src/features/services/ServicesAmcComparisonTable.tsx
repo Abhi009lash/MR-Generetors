@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { AMC_COMPARISON_ROWS } from './servicesData';
+import { AMC_COMPARISON_ROWS, type AmcComparisonRow } from './servicesData';
 
 interface ServicesAmcComparisonTableProps {
   onRequestAmcQuote: () => void;
@@ -65,7 +65,7 @@ export const ServicesAmcComparisonTable: React.FC<ServicesAmcComparisonTableProp
 
               {/* Rows */}
               <tbody className="divide-y divide-slate-100 text-xs font-karla">
-                {AMC_COMPARISON_ROWS.map((row, idx) => (
+                {AMC_COMPARISON_ROWS.map((row: AmcComparisonRow, idx: number) => (
                   <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                     <td className="py-3.5 px-6 font-bold text-[#00163D]">
                       {row.deliverable}

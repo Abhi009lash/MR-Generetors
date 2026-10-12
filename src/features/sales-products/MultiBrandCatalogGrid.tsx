@@ -7,6 +7,9 @@ interface MultiBrandCatalogGridProps {
   onNavigateToTata?: () => void;
   onNavigateToCummins?: () => void;
   onNavigateToEicher?: () => void;
+  onNavigateToMahindra?: () => void;
+  onNavigateToKirloskar?: () => void;
+  onNavigateToCaterpillar?: () => void;
 }
 
 interface BrandCardItem {
@@ -95,6 +98,9 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
   onNavigateToTata,
   onNavigateToCummins,
   onNavigateToEicher,
+  onNavigateToMahindra,
+  onNavigateToKirloskar,
+  onNavigateToCaterpillar,
 }) => {
   return (
     <section className="bg-[#EFF4FF] py-14 border-t border-[#D6E4FF] select-none">
@@ -123,7 +129,10 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
             const isTata = b.id === 'tata' || b.name === 'TATA';
             const isCummins = b.id === 'cummins' || b.name === 'CUMMINS';
             const isEicher = b.id === 'eicher' || b.name === 'EICHER';
-            const isInteractive = isAshokLeyland || isTata || isCummins || isEicher;
+            const isMahindra = b.id === 'mahindra' || b.name === 'MAHINDRA';
+            const isKirloskar = b.id === 'kirloskar' || b.name === 'KIRLOSKAR';
+            const isCaterpillar = b.id === 'caterpillar' || b.name.includes('CAT');
+            const isInteractive = isAshokLeyland || isTata || isCummins || isEicher || isMahindra || isKirloskar || isCaterpillar;
 
             return (
               <div
@@ -137,6 +146,12 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                     onNavigateToCummins();
                   } else if (isEicher && onNavigateToEicher) {
                     onNavigateToEicher();
+                  } else if (isMahindra && onNavigateToMahindra) {
+                    onNavigateToMahindra();
+                  } else if (isKirloskar && onNavigateToKirloskar) {
+                    onNavigateToKirloskar();
+                  } else if (isCaterpillar && onNavigateToCaterpillar) {
+                    onNavigateToCaterpillar();
                   }
                 }}
                 className={`bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 transition-all ${
@@ -197,6 +212,12 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                          onNavigateToCummins();
                        } else if (isEicher && onNavigateToEicher) {
                          onNavigateToEicher();
+                       } else if (isMahindra && onNavigateToMahindra) {
+                         onNavigateToMahindra();
+                       } else if (isKirloskar && onNavigateToKirloskar) {
+                         onNavigateToKirloskar();
+                       } else if (isCaterpillar && onNavigateToCaterpillar) {
+                         onNavigateToCaterpillar();
                        } else {
                          onSelectBrand(b.name, b.kvaRange);
                        }

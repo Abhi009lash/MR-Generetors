@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { TopBar } from './features/layout/TopBar';
 import { Navbar } from './features/layout/Navbar';
-import { HeroSection } from './features/hero/HeroSection';
-import { CorporateProfile } from './features/about/CorporateProfile';
+import { HomePage } from './features/home/HomePage';
 import { AboutPage } from './features/about/AboutPage';
-import { ProductsSection } from './features/products/ProductsSection';
-import { BrandsSection } from './features/brands/BrandsSection';
-import { WhyChooseUsSection } from './features/why-us/WhyChooseUsSection';
-import { EnterpriseClientsSection } from './features/clients/EnterpriseClientsSection';
-import { TestimonialsSection } from './features/testimonials/TestimonialsSection';
-import { ContactSection } from './features/contact/ContactSection';
-import { ContactPage } from './features/contact/ContactPage';
 import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { TataGensetsPage } from './features/tata/TataGensetsPage';
 import { CumminsPage } from './features/cummins/CumminsPage';
 import { EicherPage } from './features/eicher/EicherPage';
+import { MahindraPage } from './features/mahindra/MahindraPage';
+import { KirloskarPage } from './features/kirloskar/KirloskarPage';
+import { CaterpillarPage } from './features/caterpillar/CaterpillarPage';
 import { ServicesPage } from './features/services/ServicesPage';
+import { AmcPage } from './features/amc/AmcPage';
 import { SparesPage } from './features/spares/SparesPage';
-import { BlogPage } from './features/blog/BlogPage';
 import { RentalsPage } from './features/rentals/RentalsPage';
+import { BlogPage } from './features/blog/BlogPage';
+import { ContactPage } from './features/contact/ContactPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -35,7 +32,11 @@ export type PageId =
   | 'tata'
   | 'cummins'
   | 'eicher'
+  | 'mahindra'
+  | 'kirloskar'
+  | 'caterpillar'
   | 'services'
+  | 'amc'
   | 'spares'
   | 'rentals'
   | 'blog'
@@ -54,9 +55,7 @@ export const App: React.FC = () => {
   };
 
   const handleOpenQuoteModal = (modelName?: string, capacity?: string) => {
-    if (modelName) {
-      setSelectedCapacity(capacity || '');
-    }
+    if (modelName) setSelectedCapacity(capacity || '');
     setIsQuoteModalOpen(true);
   };
 
@@ -67,21 +66,27 @@ export const App: React.FC = () => {
   };
 
   const handleSelectBrand = (brand: BrandItem) => {
-    if (brand.id === 'leypower' || brand.name.toLowerCase().includes('leypower')) {
-      handleNavigate('leypower');
+    const brandMap: Record<string, PageId> = {
+      leypower: 'leypower',
+      'ashok-leyland': 'leypower',
+      tata: 'tata',
+      cummins: 'cummins',
+      eicher: 'eicher',
+      mahindra: 'mahindra',
+      kirloskar: 'kirloskar',
+      caterpillar: 'caterpillar',
+      cat: 'caterpillar',
+    };
+    if (brandMap[brand.id]) {
+      handleNavigate(brandMap[brand.id]);
       return;
     }
-    if (brand.id === 'tata' || brand.name.toLowerCase().includes('tata')) {
-      handleNavigate('tata');
-      return;
-    }
-    if (brand.id === 'cummins' || brand.name.toLowerCase().includes('cummins')) {
-      handleNavigate('cummins');
-      return;
-    }
-    if (brand.id === 'eicher' || brand.name.toLowerCase().includes('eicher')) {
-      handleNavigate('eicher');
-      return;
+    const nameLower = brand.name.toLowerCase();
+    for (const [key, page] of Object.entries(brandMap)) {
+      if (nameLower.includes(key)) {
+        handleNavigate(page);
+        return;
+      }
     }
     setSelectedProduct(null);
     setSelectedCapacity(brand.kVaRange);
@@ -98,12 +103,17 @@ export const App: React.FC = () => {
     }
   };
 
+  const brandProps = {
+    onNavigateHome: () => handleNavigate('home'),
+    onNavigateProducts: () => handleNavigate('products'),
+    onOpenQuoteModal: handleOpenQuoteModal,
+    onOpenBrochureModal: () => setIsBrochureModalOpen(true),
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F8F9FF] text-industrial-textDark antialiased">
-      {/* Top utility bar */}
       <TopBar onOpenBrochureModal={() => setIsBrochureModalOpen(true)} />
 
-      {/* Main sticky navigation header */}
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}
@@ -112,14 +122,12 @@ export const App: React.FC = () => {
 
       <main className="flex-1">
         {currentPage === 'about' ? (
-          /* Dedicated About Us Page matching Figma screen 12474d8ecf774619ba81f220b3a50d27 */
           <AboutPage
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
             onNavigateHome={() => handleNavigate('home')}
           />
         ) : currentPage === 'products' ? (
-          /* Dedicated Sales & Products Page matching Figma specifications */
           <SalesProductsPage
             onOpenQuoteModal={handleOpenQuoteModal}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
@@ -127,108 +135,70 @@ export const App: React.FC = () => {
             onNavigateToTata={() => handleNavigate('tata')}
             onNavigateToCummins={() => handleNavigate('cummins')}
             onNavigateToEicher={() => handleNavigate('eicher')}
+            onNavigateToMahindra={() => handleNavigate('mahindra')}
+            onNavigateToKirloskar={() => handleNavigate('kirloskar')}
+            onNavigateToCaterpillar={() => handleNavigate('caterpillar')}
           />
         ) : currentPage === 'leypower' ? (
-          /* Dedicated Ashok Leyland LEYPOWER Generators Page */
-          <LeypowerPage
-            onNavigateHome={() => handleNavigate('home')}
-            onNavigateProducts={() => handleNavigate('products')}
-            onOpenQuoteModal={handleOpenQuoteModal}
-            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-          />
+          <LeypowerPage {...brandProps} />
         ) : currentPage === 'tata' ? (
-          /* Dedicated Tata Diesel Generators Page matching Figma screen */
-          <TataGensetsPage
-            onNavigateHome={() => handleNavigate('home')}
-            onNavigateProducts={() => handleNavigate('products')}
-            onOpenQuoteModal={handleOpenQuoteModal}
-            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-          />
+          <TataGensetsPage {...brandProps} />
         ) : currentPage === 'cummins' ? (
-          /* Dedicated Cummins Diesel Generators Page */
-          <CumminsPage
-            onNavigateHome={() => handleNavigate('home')}
-            onNavigateProducts={() => handleNavigate('products')}
-            onOpenQuoteModal={handleOpenQuoteModal}
-            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-          />
+          <CumminsPage {...brandProps} />
         ) : currentPage === 'eicher' ? (
-          /* Dedicated Eicher Diesel Generators Page matching image 7 */
-          <EicherPage
-            onNavigateHome={() => handleNavigate('home')}
-            onNavigateProducts={() => handleNavigate('products')}
-            onOpenQuoteModal={handleOpenQuoteModal}
-            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-          />
+          <EicherPage {...brandProps} />
+        ) : currentPage === 'mahindra' ? (
+          <MahindraPage {...brandProps} />
+        ) : currentPage === 'kirloskar' ? (
+          <KirloskarPage {...brandProps} />
+        ) : currentPage === 'caterpillar' ? (
+          <CaterpillarPage {...brandProps} />
         ) : currentPage === 'services' ? (
-          /* Dedicated Services & Maintenance Page */
           <ServicesPage
             onNavigate={handleNavigate}
             onOpenConsultationModal={() => handleOpenQuoteModal()}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
           />
+        ) : currentPage === 'amc' ? (
+          <AmcPage
+            onNavigateHome={() => handleNavigate('home')}
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
         ) : currentPage === 'spares' ? (
-          /* Dedicated Spares & Accessories Page matching Figma design */
           <SparesPage
             onNavigateHome={() => handleNavigate('home')}
             onNavigateServices={() => handleNavigate('services')}
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         ) : currentPage === 'rentals' ? (
-          /* Dedicated Generator Rentals Page matching Figma design */
           <RentalsPage
             onNavigateHome={() => handleNavigate('home')}
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         ) : currentPage === 'blog' ? (
-          /* Dedicated Blog & Power Insights Page matching Figma design */
           <BlogPage
             onNavigateHome={() => handleNavigate('home')}
             onNavigateContact={() => handleNavigate('contact')}
           />
         ) : currentPage === 'contact' ? (
-          /* Dedicated Contact Us Page matching Figma screen and media_1791826383802_fd1feea7.png */
           <ContactPage
             onNavigateHome={() => handleNavigate('home')}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
           />
         ) : (
-          /* Home Screen */
-          <>
-            <HeroSection
-              onOpenQuoteModal={() => handleOpenQuoteModal()}
-              onRequirementSelect={handleRequirementSelect}
-            />
-
-            <CorporateProfile
-              onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
-              onOpenQuoteModal={() => handleOpenQuoteModal()}
-            />
-
-            <ProductsSection
-              onSelectProduct={handleSelectProduct}
-              onOpenTurnkeyModal={() =>
-                handleOpenQuoteModal('Turnkey Substation & DG Sets', '1000 - 2000 kVA')
-              }
-            />
-
-            <BrandsSection onSelectBrand={handleSelectBrand} />
-
-            <WhyChooseUsSection />
-
-            <EnterpriseClientsSection />
-
-            <TestimonialsSection />
-
-            <ContactSection initialCapacity={selectedCapacity} />
-          </>
+          <HomePage
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+            onSelectProduct={handleSelectProduct}
+            onSelectBrand={handleSelectBrand}
+            onRequirementSelect={handleRequirementSelect}
+            selectedCapacity={selectedCapacity}
+          />
         )}
       </main>
 
-      {/* Footer */}
       <Footer onNavigate={handleNavigate} />
 
-      {/* Global Modals */}
       <QuoteModal
         isOpen={isQuoteModalOpen}
         onClose={() => {
@@ -244,7 +214,6 @@ export const App: React.FC = () => {
         onClose={() => setIsBrochureModalOpen(false)}
       />
 
-      {/* Floating Mobile Fast Actions */}
       <div className="fixed bottom-4 right-4 z-40 sm:hidden flex flex-col gap-2.5">
         <a
           href={`https://wa.me/91${APP_CONFIG.phonePrimary}?text=Hi%20MR%20Generators,%20I%20need%20a%20diesel%20generator%20quotation.`}

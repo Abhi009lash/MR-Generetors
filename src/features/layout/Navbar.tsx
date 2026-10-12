@@ -5,8 +5,8 @@ import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact';
-  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -89,6 +89,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               Services
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigate('amc')}
+              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'amc'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
+            >
+              AMC
             </button>
 
             <button

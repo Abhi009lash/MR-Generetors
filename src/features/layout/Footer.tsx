@@ -1,15 +1,15 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check, Globe } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const oemEngines = [
-    'Cummins', 'Eicher Engines', 'Kirloskar', 'Tata Motors', 'Ashok Leyland', 'Mahindra',
-    'Caterpillar', 'Perkins', 'Volvo Penta', 'Baudouin', 'Scania',
+    'Cummins', 'Kirloskar KOEL', 'Caterpillar CAT', 'Mahindra Powerol', 'Eicher Engines', 'Tata Motors', 'Ashok Leyland',
+    'Perkins', 'Volvo Penta', 'Baudouin', 'Scania',
   ];
 
   return (
@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </p>
             </div>
 
-            {/* Social Links */}
+            {/* Fast Connect */}
             <div className="space-y-1.5 pt-1">
               <span className="block font-karla font-bold text-[10px] uppercase tracking-wider text-[#C4C6D0]">
                 CONNECT WITH US
@@ -61,31 +61,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
                 <a
                   href="#contact"
-                  className="w-8 h-8 rounded-[2px] bg-[#131D3B] hover:bg-[#1C2C54] text-[#DFE9FB] flex items-center justify-center transition-colors"
-                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-[2px] bg-[#131D3B] hover:bg-[#1C2C54] text-[#DFE9FB] flex items-center justify-center transition-colors text-xs font-bold"
+                  aria-label="Portal"
                 >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 0 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
-                </a>
-                <a
-                  href="#contact"
-                  className="w-8 h-8 rounded-[2px] bg-[#131D3B] hover:bg-[#1C2C54] text-[#DFE9FB] flex items-center justify-center transition-colors"
-                  aria-label="Facebook"
-                >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
-                </a>
-                <a
-                  href="#contact"
-                  className="w-8 h-8 rounded-[2px] bg-[#131D3B] hover:bg-[#1C2C54] text-[#DFE9FB] flex items-center justify-center transition-colors"
-                  aria-label="Instagram"
-                >
-                  <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </a>
-                <a
-                  href="#contact"
-                  className="w-8 h-8 rounded-[2px] bg-[#131D3B] hover:bg-[#1C2C54] text-[#DFE9FB] flex items-center justify-center transition-colors"
-                  aria-label="YouTube"
-                >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <Globe className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
@@ -96,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h4 className="font-rubik font-semibold text-lg uppercase tracking-tight text-white">
               QUICK LINKS
             </h4>
-            <ul className="space-y-1.5 font-karla text-xs sm:text-sm text-[#DFE9FB]">
+            <ul className="space-y-1 font-karla text-xs sm:text-sm text-[#DFE9FB]">
               <li>
                 <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Home
@@ -110,6 +89,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button type="button" onClick={() => onNavigate?.('products')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">
                   Sales &amp; Products
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('mahindra')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
+                  Mahindra Powerol DG Sets
                 </button>
               </li>
               <li>
@@ -128,6 +112,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </button>
               </li>
               <li>
+                <button type="button" onClick={() => onNavigate?.('kirloskar')} className="hover:text-white transition-colors cursor-pointer text-left text-emerald-400 font-bold">
+                  Kirloskar KOEL Green
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('caterpillar')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
+                  Caterpillar (CAT®) DG Sets
+                </button>
+              </li>
+              <li>
                 <button type="button" onClick={() => onNavigate?.('eicher')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
                   Eicher Diesel Generators
                 </button>
@@ -135,6 +129,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Services &amp; Maintenance
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('amc')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
+                  Generator AMC Services
                 </button>
               </li>
               <li>
@@ -151,9 +150,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <button type="button" onClick={() => onNavigate?.('blog')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Blog &amp; Power Insights
                 </button>
-              </li>
-              <li>
-                <a href="#testimonials" className="hover:text-white transition-colors">Clients &amp; Portfolio</a>
               </li>
               <li>
                 <button type="button" onClick={() => onNavigate?.('contact')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">

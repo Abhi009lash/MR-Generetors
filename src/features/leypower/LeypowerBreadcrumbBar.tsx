@@ -1,16 +1,14 @@
 import React from 'react';
-import { Phone, FileText, ChevronRight, CheckCircle2, ShieldCheck, Clock, Award } from 'lucide-react';
+import { Phone, FileText, CheckCircle2, ShieldCheck, Clock, Award } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
 
 interface LeypowerBreadcrumbBarProps {
-  onNavigateHome: () => void;
+  onNavigateHome?: () => void;
   onNavigateProducts?: () => void;
   onOpenQuoteModal: (modelName?: string, capacity?: string) => void;
 }
 
 export const LeypowerBreadcrumbBar: React.FC<LeypowerBreadcrumbBarProps> = ({
-  onNavigateHome,
-  onNavigateProducts,
   onOpenQuoteModal,
 }) => {
   return (
@@ -18,30 +16,8 @@ export const LeypowerBreadcrumbBar: React.FC<LeypowerBreadcrumbBarProps> = ({
       {/* Main Top Header Strip */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
-          {/* Left Title & Breadcrumb Block */}
+          {/* Left Title & Badge Block */}
           <div className="space-y-2">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-1.5 text-xs text-slate-300 font-karla">
-              <button
-                type="button"
-                onClick={onNavigateHome}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                HOME
-              </button>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
-              <button
-                type="button"
-                onClick={onNavigateProducts}
-                className="hover:text-white transition-colors cursor-pointer text-slate-400"
-              >
-                BRANDS
-              </button>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
-              <span className="text-[#D97706] font-bold tracking-wide">
-                ASHOK LEYLAND LEYPOWER
-              </span>
-            </div>
 
             {/* Title & Badge */}
             <div className="flex flex-wrap items-center gap-3">

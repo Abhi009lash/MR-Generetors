@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { TataBreadcrumbStatusBar } from './TataBreadcrumbStatusBar';
 import { TataHeroSection } from './TataHeroSection';
 import { TataMetricsRibbon } from './TataMetricsRibbon';
 import { TataFeaturesPillars } from './TataFeaturesPillars';
@@ -17,8 +16,6 @@ interface TataGensetsPageProps {
 }
 
 export const TataGensetsPage: React.FC<TataGensetsPageProps> = ({
-  onNavigateHome,
-  onNavigateProducts,
   onOpenQuoteModal,
   onOpenBrochureModal,
 }) => {
@@ -52,11 +49,7 @@ export const TataGensetsPage: React.FC<TataGensetsPageProps> = ({
 
   return (
     <div className="bg-[#F8F9FF] min-h-screen text-slate-800 flex flex-col">
-      {/* 1. Breadcrumbs & Depot Dispatch Bar */}
-      <TataBreadcrumbStatusBar
-        onNavigateHome={onNavigateHome}
-        onNavigateProducts={onNavigateProducts}
-      />
+      {/* 1. Hero Section */}
 
       {/* 2. Hero Section */}
       <TataHeroSection

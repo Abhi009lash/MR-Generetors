@@ -33,6 +33,8 @@ import rentalIndustrialHeavyImg from './rental_industrial_heavy_1791834250067.jp
 
 import cumminsDgHeroImg from './cummins_dg_set_hero.png';
 import eicherDgHeroImg from './eicher_dg_set_hero.png';
+import kirloskarDgHeroImg from './kirloskar_dg_set_hero.png';
+import catDgHeroImg from './cat_dg_set_hero.png';
 
 export {
   aboutEcosystemImg,
@@ -52,6 +54,8 @@ export {
   tataDgHeroImg,
   cumminsDgHeroImg,
   eicherDgHeroImg,
+  kirloskarDgHeroImg,
+  catDgHeroImg,
   sparesHeroEngineImg,
   sparesFiltrationImg,
   sparesCoolingImg,
