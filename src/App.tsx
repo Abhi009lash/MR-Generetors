@@ -11,6 +11,7 @@ import { EicherPage } from './features/eicher/EicherPage';
 import { MahindraPage } from './features/mahindra/MahindraPage';
 import { KirloskarPage } from './features/kirloskar/KirloskarPage';
 import { CaterpillarPage } from './features/caterpillar/CaterpillarPage';
+import { PortablePage } from './features/portable/PortablePage';
 import { ServicesPage } from './features/services/ServicesPage';
 import { AmcPage } from './features/amc/AmcPage';
 import { SparesPage } from './features/spares/SparesPage';
@@ -20,27 +21,12 @@ import { ContactPage } from './features/contact/ContactPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
-import type { ProductItem, BrandItem, SizingRequirement } from './types';
+import { QuotePortalPage } from './features/quote-portal/QuotePortalPage';
+import type { ProductItem, BrandItem, SizingRequirement, PageId } from './types';
 import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
-export type PageId =
-  | 'home'
-  | 'about'
-  | 'products'
-  | 'leypower'
-  | 'tata'
-  | 'cummins'
-  | 'eicher'
-  | 'mahindra'
-  | 'kirloskar'
-  | 'caterpillar'
-  | 'services'
-  | 'amc'
-  | 'spares'
-  | 'rentals'
-  | 'blog'
-  | 'contact';
+export type { PageId };
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -76,6 +62,8 @@ export const App: React.FC = () => {
       kirloskar: 'kirloskar',
       caterpillar: 'caterpillar',
       cat: 'caterpillar',
+      portable: 'portable',
+      mobile: 'portable',
     };
     if (brandMap[brand.id]) {
       handleNavigate(brandMap[brand.id]);
@@ -138,6 +126,7 @@ export const App: React.FC = () => {
             onNavigateToMahindra={() => handleNavigate('mahindra')}
             onNavigateToKirloskar={() => handleNavigate('kirloskar')}
             onNavigateToCaterpillar={() => handleNavigate('caterpillar')}
+            onNavigateToPortable={() => handleNavigate('portable')}
           />
         ) : currentPage === 'leypower' ? (
           <LeypowerPage {...brandProps} />
@@ -153,6 +142,8 @@ export const App: React.FC = () => {
           <KirloskarPage {...brandProps} />
         ) : currentPage === 'caterpillar' ? (
           <CaterpillarPage {...brandProps} />
+        ) : currentPage === 'portable' ? (
+          <PortablePage {...brandProps} />
         ) : currentPage === 'services' ? (
           <ServicesPage
             onNavigate={handleNavigate}
@@ -185,6 +176,8 @@ export const App: React.FC = () => {
             onNavigateHome={() => handleNavigate('home')}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
           />
+        ) : currentPage === 'quote' ? (
+          <QuotePortalPage onNavigateHome={() => handleNavigate('home')} />
         ) : (
           <HomePage
             onOpenQuoteModal={handleOpenQuoteModal}

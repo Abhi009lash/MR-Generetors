@@ -17,6 +17,7 @@ interface SalesProductsPageProps {
   onNavigateToMahindra?: () => void;
   onNavigateToKirloskar?: () => void;
   onNavigateToCaterpillar?: () => void;
+  onNavigateToPortable?: () => void;
 }
 
 export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
@@ -29,6 +30,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
   onNavigateToMahindra,
   onNavigateToKirloskar,
   onNavigateToCaterpillar,
+  onNavigateToPortable,
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     kvaRange: 'all',
@@ -80,6 +82,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
         onNavigateToMahindra={onNavigateToMahindra}
         onNavigateToKirloskar={onNavigateToKirloskar}
         onNavigateToCaterpillar={onNavigateToCaterpillar}
+        onNavigateToPortable={onNavigateToPortable}
       />
 
       {/* 6. Turnkey 4-Step Engineering Walkthrough */}

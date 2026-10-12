@@ -67,6 +67,5 @@ export const CaterpillarBreadcrumbBar: React.FC<CaterpillarBreadcrumbBarProps> =
           </div>
         </div>
       </div>
-    </div>
   );
 };

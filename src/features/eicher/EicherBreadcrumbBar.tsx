@@ -67,6 +67,5 @@ export const EicherBreadcrumbBar: React.FC<EicherBreadcrumbBarProps> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };

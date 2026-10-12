@@ -1,9 +1,10 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check, Globe } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
+import type { PageId } from '../../types';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  onNavigate?: (page: PageId) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -122,6 +123,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </button>
               </li>
               <li>
+                <button type="button" onClick={() => onNavigate?.('portable')} className="hover:text-white transition-colors cursor-pointer text-left text-sky-300 font-bold">
+                  Mobile &amp; Portable (1 - 125 kVA)
+                </button>
+              </li>
+              <li>
                 <button type="button" onClick={() => onNavigate?.('eicher')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
                   Eicher Diesel Generators
                 </button>
@@ -149,6 +155,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button type="button" onClick={() => onNavigate?.('blog')} className="hover:text-white transition-colors cursor-pointer text-left">
                   Blog &amp; Power Insights
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('quote')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
+                  Commercial Quotation Portal
                 </button>
               </li>
               <li>

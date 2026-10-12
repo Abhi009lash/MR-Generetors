@@ -67,6 +67,5 @@ export const CumminsBreadcrumbBar: React.FC<CumminsBreadcrumbBarProps> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };

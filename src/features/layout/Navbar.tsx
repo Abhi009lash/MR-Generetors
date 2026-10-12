@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Menu, FileText, User } from 'lucide-react';
 import { MobileMenu } from './MobileMenu';
 import { mrGeneratorsLogo } from '../../assets/images';
+import type { PageId } from '../../types';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact';
-  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  currentPage: PageId;
+  onNavigate: (page: PageId) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -163,8 +164,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2.5">
             <button
               type="button"
-              onClick={onOpenQuoteModal}
-              className="h-10 px-5 bg-[#0F2B5C] hover:bg-[#00163D] text-white font-karla font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer"
+              onClick={() => onNavigate('quote')}
+              className={`h-10 px-5 font-karla font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer ${
+                currentPage === 'quote'
+                  ? 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold'
+                  : 'bg-[#0F2B5C] hover:bg-[#00163D] text-white'
+              }`}
             >
               <FileText className="w-4 h-4" />
               <span>GET INSTANT QUOTE</span>

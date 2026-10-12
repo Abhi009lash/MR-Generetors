@@ -3,12 +3,13 @@ import { X, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
 import { Button } from '../../components/ui/Button';
 import { mrGeneratorsLogo } from '../../assets/images';
+import type { PageId } from '../../types';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  onNavigate?: (page: PageId) => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -19,20 +20,22 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact') => {
+  const handleLinkClick = (page?: PageId) => {
     onClose();
     if (page && onNavigate) {
       onNavigate(page);
     }
   };
 
-  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'mahindra' | 'kirloskar' | 'caterpillar' | 'services' | 'amc' | 'spares' | 'rentals' | 'blog' | 'contact'; href?: string }> = [
+  const navItems: Array<{ label: string; page?: PageId; href?: string }> = [
     { label: 'Home', page: 'home' },
+    { label: 'Get Instant Quote', page: 'quote' },
     { label: 'About Us', page: 'about' },
     { label: 'Sales & Products', page: 'products' },
     { label: 'Mahindra Powerol DG Sets', page: 'mahindra' },
     { label: 'Kirloskar KOEL Green', page: 'kirloskar' },
     { label: 'Caterpillar (CAT®)', page: 'caterpillar' },
+    { label: 'Mobile & Portable (1 - 125 kVA)', page: 'portable' },
     { label: 'Eicher DG Sets', page: 'eicher' },
     { label: 'Cummins DG Sets', page: 'cummins' },
     { label: 'Ashok Leyland LEYPOWER', page: 'leypower' },
@@ -120,7 +123,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             fullWidth
             onClick={() => {
               onClose();
-              onOpenQuoteModal();
+              if (onNavigate) {
+                onNavigate('quote');
+              } else {
+                onOpenQuoteModal();
+              }
             }}
           >
             GET A QUOTE

@@ -80,3 +80,25 @@ export interface ContactSubmissionResult {
   timestamp: string;
   previewUrl?: string;
 }
+
+export type PageId =
+  | 'home'
+  | 'about'
+  | 'products'
+  | 'leypower'
+  | 'tata'
+  | 'cummins'
+  | 'eicher'
+  | 'mahindra'
+  | 'kirloskar'
+  | 'caterpillar'
+  | 'portable'
+  | 'services'
+  | 'amc'
+  | 'spares'
+  | 'rentals'
+  | 'blog'
+  | 'contact'
+  | 'quote';
+
+
