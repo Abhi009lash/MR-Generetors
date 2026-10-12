@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductItem } from '../../types';
+import type { ProductItem } from '../../types';
 import { GeneratorIllustration } from '../../components/ui/GeneratorIllustration';
 
 interface ProductCardProps {
@@ -14,8 +14,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className="bg-white rounded-lg shadow-sm border border-slate-100 flex flex-col justify-between overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg group">
       {/* Visual Image Header */}
-      <div className="relative w-full h-56 bg-slate-50 border-b border-slate-100 flex items-center justify-center p-4">
-        <GeneratorIllustration model={product.imageType} />
+      <div className="relative w-full h-56 bg-gradient-to-b from-slate-50 to-slate-100 border-b border-slate-100 flex items-center justify-center p-4 overflow-hidden">
+        {product.imageSrc ? (
+          <img
+            src={product.imageSrc}
+            alt={product.name}
+            className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <GeneratorIllustration model={product.imageType} />
+        )}
 
         {/* Top Badges */}
         <div className="absolute top-3.5 left-3.5 px-2.5 py-1 bg-navy-950 text-white font-karla font-bold text-xs uppercase tracking-wider rounded-[2px] shadow-xs">

@@ -13,7 +13,10 @@ export interface ProductItem {
   spec2Value: string;
   priceNote: string;
   imageType: '82.5' | '500' | '125' | '250' | '57';
+  imageSrc?: string;
 }
+
+export const IS_TYPES_MODULE = true;
 
 export interface BrandItem {
   id: string;

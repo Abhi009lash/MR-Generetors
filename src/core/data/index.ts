@@ -1,4 +1,11 @@
-import { ProductItem, BrandItem, TestimonialItem } from '../../types';
+import type { ProductItem, BrandItem, TestimonialItem } from '../../types';
+import {
+  greaves82Img,
+  greaves500Img,
+  greavesOpenCanopyImg,
+  greaves250Img,
+  greaves57Img,
+} from '../../assets/images';
 
 export const PRODUCTS_DATA: ProductItem[] = [
   {
@@ -15,6 +22,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     spec2Value: 'CPCB IV+',
     priceNote: 'Price on Request',
     imageType: '82.5',
+    imageSrc: greaves82Img,
   },
   {
     id: 'greaves-500',
@@ -30,6 +38,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     spec2Value: 'Brushless AVO',
     priceNote: 'Commercial Prime',
     imageType: '500',
+    imageSrc: greaves500Img,
   },
   {
     id: 'greaves-125',
@@ -45,6 +54,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     spec2Value: '250 Litres',
     priceNote: 'Best Price Offer',
     imageType: '125',
+    imageSrc: greavesOpenCanopyImg,
   },
   {
     id: 'greaves-250',
@@ -60,6 +70,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     spec2Value: 'Electronic Class A1',
     priceNote: 'Inquire Cost',
     imageType: '250',
+    imageSrc: greaves250Img,
   },
   {
     id: 'greaves-57',
@@ -75,6 +86,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     spec2Value: 'Low L/hr',
     priceNote: 'Ready Stock',
     imageType: '57',
+    imageSrc: greaves57Img,
   },
 ];
 

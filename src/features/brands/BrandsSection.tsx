@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrandItem } from '../../types';
+import type { BrandItem } from '../../types';
 import { BrandCard } from './BrandCard';
 import { BRANDS_DATA } from '../../core/data';
 

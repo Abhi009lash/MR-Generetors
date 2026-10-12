@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
-import { BrandItem } from '../../types';
+import type { BrandItem } from '../../types';
 
 interface BrandCardProps {
   brand: BrandItem;

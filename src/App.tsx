@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { TopBar } from './features/layout/TopBar';
 import { Navbar } from './features/layout/Navbar';
 import { HeroSection } from './features/hero/HeroSection';
-import { PowerRequirementFinder } from './features/calculator/PowerRequirementFinder';
-import { StatsStrip } from './features/stats/StatsStrip';
 import { CorporateProfile } from './features/about/CorporateProfile';
 import { ProductsSection } from './features/products/ProductsSection';
 import { BrandsSection } from './features/brands/BrandsSection';
@@ -14,7 +12,7 @@ import { ContactSection } from './features/contact/ContactSection';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
-import { ProductItem, BrandItem, SizingRequirement } from './types';
+import type { ProductItem, BrandItem, SizingRequirement } from './types';
 import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
@@ -62,16 +60,11 @@ export const App: React.FC = () => {
       <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <HeroSection onOpenQuoteModal={() => handleOpenQuoteModal()} />
-
-        {/* Embedded Sizing Tool */}
-        <PowerRequirementFinder onRequirementSelect={handleRequirementSelect} />
-
-        {/* Dark Stats Credibility Strip */}
-        <div className="mt-14 sm:mt-16">
-          <StatsStrip />
-        </div>
+        {/* Unified Hero Section with embedded Sizing Finder and Stats */}
+        <HeroSection
+          onOpenQuoteModal={() => handleOpenQuoteModal()}
+          onRequirementSelect={handleRequirementSelect}
+        />
 
         {/* Corporate Profile & Circular Ecosystem */}
         <CorporateProfile

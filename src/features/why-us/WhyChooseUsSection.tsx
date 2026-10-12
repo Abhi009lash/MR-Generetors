@@ -1,5 +1,6 @@
 import React from 'react';
-import { PillarCard, PillarItem } from './PillarCard';
+import { PillarCard } from './PillarCard';
+import type { PillarItem } from './PillarCard';
 import {
   Wrench,
   Award,
@@ -9,7 +10,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 
-export const PILLARS_DATA: PillarItem[] = [
+const PILLARS_DATA: PillarItem[] = [
   {
     id: 'ready-services',
     title: 'Ready for Services',

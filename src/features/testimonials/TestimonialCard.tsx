@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, CheckCircle } from 'lucide-react';
-import { TestimonialItem } from '../../types';
+import type { TestimonialItem } from '../../types';
 
 interface TestimonialCardProps {
   testimonial: TestimonialItem;

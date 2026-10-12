@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
-import { ProductItem } from '../../types';
+import type { ProductItem } from '../../types';
 import { ProductCard } from './ProductCard';
 import { ProductTurnkeyCard } from './ProductTurnkeyCard';
 import { PRODUCTS_DATA } from '../../core/data';

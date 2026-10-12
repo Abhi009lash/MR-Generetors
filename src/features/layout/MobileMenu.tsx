@@ -1,7 +1,8 @@
 import React from 'react';
-import { X, Phone, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
 import { Button } from '../../components/ui/Button';
+import { mrGeneratorsLogo } from '../../assets/images';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -38,14 +39,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         <div>
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-brand-red flex items-center justify-center font-bold text-white shadow">
-                <Zap className="w-4 h-4 fill-current" />
-              </div>
-              <div className="font-rubik font-bold tracking-tight text-white leading-tight">
-                M.R GENERATORS
-              </div>
-            </div>
+            <img
+              src={mrGeneratorsLogo}
+              alt="M.R Generators Logo"
+              className="h-9 w-auto object-contain bg-white px-2 py-0.5 rounded-[2px]"
+            />
             <button
               onClick={onClose}
               className="p-1.5 rounded text-slate-300 hover:text-white hover:bg-white/10"

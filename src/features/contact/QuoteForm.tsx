@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, ChevronDown } from 'lucide-react';
 import { CAPACITY_OPTIONS } from '../../core/config';
-import { QuoteFormData } from '../../types';
+import type { QuoteFormData } from '../../types';
 import { isValidEmail, isValidPhoneNumber } from '../../utils/formatters';
 import { ErrorState } from '../../components/feedback/FeedbackState';
 
@@ -53,8 +53,8 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
@@ -111,7 +111,9 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({
       {submitError && (
         <ErrorState
           message={submitError}
-          onRetry={handleSubmit}
+          onRetry={() => {
+            void handleSubmit();
+          }}
           className="mb-4"
         />
       )}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Zap, Phone, Mail, MapPin, ShieldCheck, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Clock } from 'lucide-react';
 import { APP_CONFIG } from '../../core/config';
+import { mrGeneratorsLogo } from '../../assets/images';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,13 +10,12 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           {/* Col 1: About */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded bg-brand-red flex items-center justify-center font-bold text-white shadow">
-                <Zap className="w-4 h-4 fill-current" />
-              </div>
-              <span className="font-rubik font-bold text-xl text-white tracking-tight">
-                M.R GENERATORS
-              </span>
+            <div className="bg-white px-3 py-1.5 rounded-[4px] inline-block shadow-sm">
+              <img
+                src={mrGeneratorsLogo}
+                alt="M.R Generators Logo"
+                className="h-9 w-auto object-contain"
+              />
             </div>
             <p className="font-karla text-sm text-brand-softBlue/80 leading-relaxed">
               Specialised power backup engineering authority delivering genuine diesel generator sales, authorised Greaves dealership, multi-brand maintenance, and turnkey acoustic installations across Telangana since 2014.
