@@ -8,7 +8,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
-  onNavigate?: (page: 'home' | 'about' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'contact') => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -19,16 +19,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const handleLinkClick = (page?: 'home' | 'about' | 'contact') => {
+  const handleLinkClick = (page?: 'home' | 'about' | 'products' | 'contact') => {
     onClose();
     if (page && onNavigate) {
       onNavigate(page);
     }
   };
 
-  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'contact'; href?: string }> = [
+  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'products' | 'contact'; href?: string }> = [
     { label: 'Home', page: 'home' },
     { label: 'About Us', page: 'about' },
+    { label: 'Sales & Products', page: 'products' },
     { label: 'Contact Us & Sizing', page: 'contact' },
     { label: 'Greaves DG Sets', href: '#products' },
     { label: 'Multi-Brand Portfolio', href: '#brands' },

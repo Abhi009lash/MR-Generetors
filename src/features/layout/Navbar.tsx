@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Menu, FileText, ChevronDown, User } from 'lucide-react';
+import { Menu, FileText, User } from 'lucide-react';
 import { MobileMenu } from './MobileMenu';
 import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about' | 'contact';
-  onNavigate: (page: 'home' | 'about' | 'contact') => void;
+  currentPage: 'home' | 'about' | 'products' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'products' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -67,15 +67,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               About Us
             </button>
 
-            <div className="relative group">
-              <button
-                type="button"
-                className="flex items-center gap-1 px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors cursor-pointer"
-              >
-                <span>Sales &amp; Products</span>
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => onNavigate('products')}
+              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'products'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
+            >
+              Sales &amp; Products
+            </button>
 
             <a
               href="#why-us"

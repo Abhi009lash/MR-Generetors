@@ -11,6 +11,7 @@ import { EnterpriseClientsSection } from './features/clients/EnterpriseClientsSe
 import { TestimonialsSection } from './features/testimonials/TestimonialsSection';
 import { ContactSection } from './features/contact/ContactSection';
 import { ContactPage } from './features/contact/ContactPage';
+import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -19,13 +20,13 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'contact'>('contact');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'contact'>('products');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
-  const handleNavigate = (page: 'home' | 'about' | 'contact') => {
+  const handleNavigate = (page: 'home' | 'about' | 'products' | 'contact') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -78,6 +79,12 @@ export const App: React.FC = () => {
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
             onNavigateHome={() => handleNavigate('home')}
+          />
+        ) : currentPage === 'products' ? (
+          /* Dedicated Sales & Products Page matching Figma specifications */
+          <SalesProductsPage
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
           />
         ) : currentPage === 'contact' ? (
           /* Dedicated Contact Us Page matching Figma screen and media_1791826383802_fd1feea7.png */
