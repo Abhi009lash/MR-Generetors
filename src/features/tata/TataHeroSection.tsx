@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Download, MapPin, Zap } from 'lucide-react';
+import { Download, MapPin, Zap } from 'lucide-react';
 import { tataDgHeroImg } from '../../assets/images';
 
 interface TataHeroSectionProps {

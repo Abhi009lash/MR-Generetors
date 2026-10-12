@@ -1,5 +1,5 @@
 import React from 'react';
-import { TATA_COMPARISON_MATRIX, type TataComparisonRow } from './tataData';
+import { TATA_COMPARISON_MATRIX } from './tataData';
 
 export const TataComparisonMatrix: React.FC = () => {
   return (

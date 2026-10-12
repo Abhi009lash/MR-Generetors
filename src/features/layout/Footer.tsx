@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -145,10 +145,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   type="button"
-                  onClick={() => onNavigate?.('services')}
+                  onClick={() => onNavigate?.('blog')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Comprehensive AMC
+                  Blog &amp; Power Insights
                 </button>
               </li>
               <li>

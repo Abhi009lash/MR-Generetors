@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
-import { TATA_CATALOG_MODELS, type TataGensetModel } from './tataData';
+import { ArrowRight, CheckCircle2, Zap } from 'lucide-react';
+import { TATA_CATALOG_MODELS } from './tataData';
 
 interface TataCatalogSectionProps {
   onSelectModel: (modelName: string, kva: string) => void;

@@ -15,6 +15,7 @@ import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { TataGensetsPage } from './features/tata/TataGensetsPage';
 import { ServicesPage } from './features/services/ServicesPage';
+import { BlogPage } from './features/blog/BlogPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -23,13 +24,13 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact'>('home');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
-  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact') => {
+  const handleNavigate = (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'blog' | 'contact') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -121,6 +122,12 @@ export const App: React.FC = () => {
             onNavigate={handleNavigate}
             onOpenConsultationModal={() => handleOpenQuoteModal()}
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+          />
+        ) : currentPage === 'blog' ? (
+          /* Dedicated Blog & Power Insights Page matching Figma design */
+          <BlogPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateContact={() => handleNavigate('contact')}
           />
         ) : currentPage === 'contact' ? (
           /* Dedicated Contact Us Page matching Figma screen and media_1791826383802_fd1feea7.png */

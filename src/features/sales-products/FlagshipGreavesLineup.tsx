@@ -19,8 +19,11 @@ export const FlagshipGreavesLineup: React.FC<FlagshipGreavesLineupProps> = ({
 }) => {
   // Apply interactive filters
   const filteredProducts = FLAGSHIP_PRODUCTS.filter((prod) => {
-    if (filters.kvaRange !== 'all' && prod.kvaCategory !== filters.kvaRange) {
-      return false;
+    if (filters.kvaRange !== 'all') {
+      if (filters.kvaRange === '5-50' && (prod.capacityKva < 5 || prod.capacityKva > 50)) return false;
+      if (filters.kvaRange === '50-125' && (prod.capacityKva < 50 || prod.capacityKva > 125)) return false;
+      if (filters.kvaRange === '125-500' && (prod.capacityKva < 125 || prod.capacityKva > 500)) return false;
+      if (filters.kvaRange === '500-2000' && (prod.capacityKva < 500 || prod.capacityKva > 2000)) return false;
     }
     if (filters.brand !== 'all' && prod.brandCategory !== filters.brand) {
       return false;

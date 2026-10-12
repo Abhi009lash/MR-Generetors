@@ -57,13 +57,20 @@ export interface ApiResponse<T> {
 }
 
 export interface ContactSubmissionPayload {
-  fullNameAndDesignation: string;
-  corporateEmail: string;
-  mobileNumber: string;
-  requirementClassification: string;
+  fullNameAndDesignation?: string;
+  corporateEmail?: string;
+  mobileNumber?: string;
+  requirementClassification?: string;
   preferredEnginePlatform?: string;
   siteLocationAndLoadSpecs?: string;
-  whatsappPdfOptIn: boolean;
+  whatsappPdfOptIn?: boolean;
+
+  // Extended form compatibility fields
+  fullName?: string;
+  phone?: string;
+  email?: string;
+  serviceType?: string;
+  message?: string;
 }
 
 export interface ContactSubmissionResult {
