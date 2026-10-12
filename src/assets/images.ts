@@ -35,6 +35,8 @@ import cumminsDgHeroImg from './cummins_dg_set_hero.png';
 import eicherDgHeroImg from './eicher_dg_set_hero.png';
 import kirloskarDgHeroImg from './kirloskar_dg_set_hero.png';
 import catDgHeroImg from './cat_dg_set_hero.png';
+import madhusudhanaImg from './Madhusudhana.png';
+import varmaImg from './Varma.png';
 
 export {
   aboutEcosystemImg,
@@ -56,6 +58,8 @@ export {
   eicherDgHeroImg,
   kirloskarDgHeroImg,
   catDgHeroImg,
+  madhusudhanaImg,
+  varmaImg,
   sparesHeroEngineImg,
   sparesFiltrationImg,
   sparesCoolingImg,

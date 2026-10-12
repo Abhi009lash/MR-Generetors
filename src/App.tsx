@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TopBar } from './features/layout/TopBar';
 import { Navbar } from './features/layout/Navbar';
 import { HomePage } from './features/home/HomePage';
@@ -36,9 +36,20 @@ export const App: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
+  useEffect(() => {
+    document.title = 'MR Generators';
+    // Automatically clear any stale anchor hashes (e.g., #testimonials) from the URL bar
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
   const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
   };
 
   const handleOpenQuoteModal = (modelName?: string, capacity?: string) => {
