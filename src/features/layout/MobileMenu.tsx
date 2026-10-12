@@ -46,9 +46,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     { label: 'Generator Rentals', page: 'rentals' },
     { label: 'Blog & Insights', page: 'blog' },
     { label: 'Contact Us & Sizing', page: 'contact' },
-    { label: 'Greaves DG Sets', href: '#products' },
+    { label: 'Enterprise Clients Portfolio', page: 'clients' },
     { label: 'Why Choose Us', href: '#why-us' },
-    { label: 'Clients & Reviews', href: '#testimonials' },
   ];
 
   return (

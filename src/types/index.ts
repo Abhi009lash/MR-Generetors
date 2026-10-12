@@ -101,6 +101,7 @@ export type PageId =
   | 'amc'
   | 'spares'
   | 'rentals'
+  | 'clients'
   | 'blog'
   | 'contact'
   | 'quote';

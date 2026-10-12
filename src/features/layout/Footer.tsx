@@ -76,97 +76,38 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h4 className="font-rubik font-semibold text-lg uppercase tracking-tight text-white">
               QUICK LINKS
             </h4>
-            <ul className="space-y-1 font-karla text-xs sm:text-sm text-[#DFE9FB]">
-              <li>
-                <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Home
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('about')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('products')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">
-                  Sales &amp; Products
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('mahindra')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
-                  Mahindra Powerol DG Sets
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('leypower')} className="hover:text-white transition-colors cursor-pointer text-left text-[#D97706] font-bold">
-                  Ashok Leyland LEYPOWER
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('cummins')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-400 font-bold">
-                  Cummins Diesel Generators
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('tata')} className="hover:text-white transition-colors cursor-pointer text-left text-blue-400 font-bold">
-                  Tata Diesel Generators
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('kirloskar')} className="hover:text-white transition-colors cursor-pointer text-left text-emerald-400 font-bold">
-                  Kirloskar KOEL Green
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('caterpillar')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
-                  Caterpillar (CAT®) DG Sets
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('portable')} className="hover:text-white transition-colors cursor-pointer text-left text-sky-300 font-bold">
-                  Mobile &amp; Portable (1 - 125 kVA)
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('eicher')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
-                  Eicher Diesel Generators
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Services &amp; Maintenance
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('amc')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
-                  Generator AMC Services
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('spares')} className="hover:text-white transition-colors cursor-pointer text-left text-[#FBBF24] font-bold">
-                  Spares &amp; Accessories
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('rentals')} className="hover:text-white transition-colors cursor-pointer text-left text-sky-400 font-bold">
-                  Generator Rentals
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('blog')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Blog &amp; Power Insights
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('quote')} className="hover:text-white transition-colors cursor-pointer text-left text-amber-300 font-bold">
-                  Commercial Quotation Portal
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => onNavigate?.('contact')} className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white">
-                  Contact Us
-                </button>
-              </li>
+            <ul className="space-y-1.5 font-karla text-xs sm:text-sm text-[#DFE9FB]">
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'about', label: 'About Us' },
+                { id: 'products', label: 'Sales & Products' },
+                { id: 'mahindra', label: 'Mahindra Powerol DG Sets' },
+                { id: 'leypower', label: 'Ashok Leyland LEYPOWER' },
+                { id: 'cummins', label: 'Cummins Diesel Generators' },
+                { id: 'tata', label: 'Tata Diesel Generators' },
+                { id: 'kirloskar', label: 'Kirloskar KOEL Green' },
+                { id: 'caterpillar', label: 'Caterpillar (CAT®) DG Sets' },
+                { id: 'portable', label: 'Mobile & Portable (1 - 125 kVA)' },
+                { id: 'eicher', label: 'Eicher Diesel Generators' },
+                { id: 'services', label: 'Services & Maintenance' },
+                { id: 'amc', label: 'Generator AMC Services' },
+                { id: 'spares', label: 'Spares & Accessories' },
+                { id: 'rentals', label: 'Generator Rentals' },
+                { id: 'clients', label: 'Enterprise Client Portfolio' },
+                { id: 'blog', label: 'Blog & Power Insights' },
+                { id: 'quote', label: 'Commercial Quotation Portal' },
+                { id: 'contact', label: 'Contact Us' },
+              ].map((item) => (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.(item.id as PageId)}
+                    className="hover:text-white transition-colors cursor-pointer text-left text-[#DFE9FB]"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

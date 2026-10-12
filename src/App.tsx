@@ -22,6 +22,7 @@ import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
 import { QuotePortalPage } from './features/quote-portal/QuotePortalPage';
+import { ClientsPage } from './features/clients/ClientsPage';
 import type { ProductItem, BrandItem, SizingRequirement, PageId } from './types';
 import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
@@ -174,6 +175,12 @@ export const App: React.FC = () => {
         ) : currentPage === 'contact' ? (
           <ContactPage
             onNavigateHome={() => handleNavigate('home')}
+            onOpenQuoteModal={() => handleOpenQuoteModal()}
+          />
+        ) : currentPage === 'clients' ? (
+          <ClientsPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateContact={() => handleNavigate('contact')}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
           />
         ) : currentPage === 'quote' ? (

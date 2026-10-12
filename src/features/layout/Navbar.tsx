@@ -10,6 +10,19 @@ interface NavbarProps {
   onNavigate: (page: PageId) => void;
 }
 
+const NAV_ITEMS: Array<{ id: PageId; label: string }> = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About Us' },
+  { id: 'products', label: 'Sales' },
+  { id: 'services', label: 'Services' },
+  { id: 'amc', label: 'AMC' },
+  { id: 'spares', label: 'Spares' },
+  { id: 'rentals', label: 'Rentals' },
+  { id: 'clients', label: 'Clients' },
+  { id: 'blog', label: 'Blog' },
+  { id: 'contact', label: 'Contact Us' },
+];
+
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenQuoteModal,
   currentPage,
@@ -20,148 +33,43 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-slate-100 select-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
-          {/* Logo with subtitle */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-12 h-20 flex items-center justify-between gap-2 xl:gap-4">
+          {/* Logo */}
           <button
             type="button"
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-3 group cursor-pointer text-left"
+            className="flex items-center group cursor-pointer text-left shrink-0"
           >
             <img
               src={mrGeneratorsLogo}
               alt="M.R Generators Logo"
               className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
-            <div className="hidden sm:flex flex-col border-l border-slate-200 pl-2.5">
-              <span className="font-rubik font-bold text-xs uppercase tracking-tight text-[#00163D] leading-none">
-                M.R GENERATORS
-              </span>
-              <span className="font-karla text-[9px] uppercase tracking-wider font-bold text-slate-500 mt-0.5">
-                POWER SYSTEMS HYDERABAD
-              </span>
-            </div>
           </button>
 
-          {/* Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-5">
-            <button
-              type="button"
-              onClick={() => onNavigate('home')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'home'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Home
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('about')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'about'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              About Us
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('products')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'products'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Sales
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('services')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'services'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Services
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('amc')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'amc'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              AMC
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('spares')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'spares'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Spares
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('rentals')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'rentals'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Rentals
-            </button>
-
-            <a
-              href="#testimonials"
-              className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
-            >
-              Clients
-            </a>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('blog')}
-              className={`px-3 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'blog'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Blog
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onNavigate('contact')}
-              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
-                currentPage === 'contact'
-                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
-                  : 'text-slate-700 hover:text-[#00163D] font-medium'
-              }`}
-            >
-              Contact Us
-            </button>
+          {/* Navigation Links with smooth responsive spacing, fixed uniform padding, no text-wrap, and no layout shift */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 shrink-0">
+            {NAV_ITEMS.map((item) => {
+              const isActive = currentPage === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onNavigate(item.id)}
+                  className={`px-2.5 xl:px-3 py-1.5 rounded-md font-karla text-[13px] xl:text-sm whitespace-nowrap transition-all duration-150 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                      : 'text-slate-700 hover:text-[#00163D] hover:bg-slate-100/70 font-semibold'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Right Action: Get Instant Quote & User Profile */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 xl:gap-2.5 shrink-0">
             <button
               type="button"
               onClick={() => onNavigate('quote')}

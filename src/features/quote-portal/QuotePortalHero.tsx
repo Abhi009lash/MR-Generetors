@@ -11,47 +11,12 @@ import {
 import { APP_CONFIG } from '../../core/config';
 
 interface QuotePortalHeroProps {
-  onNavigateHome: () => void;
+  onNavigateHome?: () => void;
 }
 
-export const QuotePortalHero: React.FC<QuotePortalHeroProps> = ({
-  onNavigateHome,
-}) => {
+export const QuotePortalHero: React.FC<QuotePortalHeroProps> = () => {
   return (
-    <>
-      {/* 1. Breadcrumb & Status Ribbon */}
-      <section className="bg-[#DFE9FB] py-2 px-4 sm:px-6 lg:px-12 border-b border-slate-200 select-none">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between text-xs font-karla text-slate-700 gap-2">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 uppercase">
-            <button
-              type="button"
-              onClick={onNavigateHome}
-              className="hover:text-[#00163D] transition-colors font-semibold cursor-pointer"
-            >
-              Home
-            </button>
-            <span className="text-slate-400">/</span>
-            <span className="text-[#00163D] font-bold">
-              Commercial Quotation &amp; Genset Sizing Portal
-            </span>
-          </nav>
-
-          <div className="flex items-center gap-4 text-xs">
-            <span className="inline-flex items-center gap-1.5 text-[#0A1D3F] font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#D97706] animate-ping" />
-              Direct Factory Sizing Hub: Sanathnagar Depot Online
-            </span>
-            <span className="hidden md:inline text-slate-400">|</span>
-            <span className="hidden md:flex items-center gap-1 text-slate-600">
-              <Clock className="w-3.5 h-3.5 text-[#00163D]" />
-              Average Turnaround: 14.8 Mins
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Hero Section */}
-      <section className="bg-[#0A1D3F] text-white py-12 lg:py-16 px-4 sm:px-6 lg:px-12 relative overflow-hidden select-none">
+    <section className="bg-[#0A1D3F] text-white py-12 lg:py-16 px-4 sm:px-6 lg:px-12 relative overflow-hidden select-none">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
@@ -167,6 +132,5 @@ export const QuotePortalHero: React.FC<QuotePortalHeroProps> = ({
           </div>
         </div>
       </section>
-    </>
   );
 };
