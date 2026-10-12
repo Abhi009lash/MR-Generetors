@@ -67,10 +67,14 @@ export interface ContactSubmissionPayload {
 
   // Extended form compatibility fields
   fullName?: string;
+  name?: string;
   phone?: string;
   email?: string;
+  kvaRequirement?: string;
+  applicationType?: string;
   serviceType?: string;
   message?: string;
+  source?: string;
 }
 
 export interface ContactSubmissionResult {

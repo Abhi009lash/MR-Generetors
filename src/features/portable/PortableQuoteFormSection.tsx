@@ -86,9 +86,9 @@ export const PortableQuoteFormSection: React.FC<PortableQuoteFormSectionProps> =
                 <Phone className="w-4 h-4 text-[#D97706]" />
                 <span className="font-bold text-white text-sm">+91 {APP_CONFIG.phonePrimary}</span>
               </a>
-              <a href={`mailto:${APP_CONFIG.emailSales}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`mailto:${APP_CONFIG.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-[#D97706]" />
-                <span>{APP_CONFIG.emailSales}</span>
+                <span>{APP_CONFIG.email}</span>
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#D97706] shrink-0 mt-0.5" />
