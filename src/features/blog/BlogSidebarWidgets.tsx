@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Zap, Phone, MapPin, CheckCircle2, ChevronRight, FileText } from 'lucide-react';
+import { Search, Zap, Phone, MapPin, CheckCircle2, FileText } from 'lucide-react';
 import { BLOG_CATEGORIES, RECENT_POSTS } from './blogData';
 import { submitContactRequirement } from '../../core/api/contactService';
 
