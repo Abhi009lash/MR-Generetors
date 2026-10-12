@@ -7,6 +7,7 @@ import greavesOpenCanopyImg from './image_from_https_mrgenerators.com_wp_content
 import greaves250Img from './image_from_https_mrgenerators.com_wp_content_uploads_2025_03_greaves_generator (4).png';
 import greaves57Img from './image_from_https_mrgenerators.com_wp_content_uploads_2025_03_greaves_generator (5).png';
 import mrGeneratorsLogo from './MR-Generators_Logo-R_i2_Final_PNG-1024x642.png';
+import screenImg from './screen.png';
 
 export {
   aboutEcosystemImg,
@@ -18,4 +19,5 @@ export {
   greaves250Img,
   greaves57Img,
   mrGeneratorsLogo,
+  screenImg,
 };

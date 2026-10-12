@@ -8,23 +8,32 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenQuoteModal: () => void;
+  onNavigate?: (page: 'home' | 'about' | 'contact') => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
   onOpenQuoteModal,
+  onNavigate,
 }) => {
   if (!isOpen) return null;
 
-  const links = [
-    { label: 'Home', href: '#top' },
-    { label: 'About Us', href: '#about' },
+  const handleLinkClick = (page?: 'home' | 'about' | 'contact') => {
+    onClose();
+    if (page && onNavigate) {
+      onNavigate(page);
+    }
+  };
+
+  const navItems: Array<{ label: string; page?: 'home' | 'about' | 'contact'; href?: string }> = [
+    { label: 'Home', page: 'home' },
+    { label: 'About Us', page: 'about' },
+    { label: 'Contact Us & Sizing', page: 'contact' },
     { label: 'Greaves DG Sets', href: '#products' },
     { label: 'Multi-Brand Portfolio', href: '#brands' },
     { label: 'Why Choose Us', href: '#why-us' },
     { label: 'Clients & Reviews', href: '#testimonials' },
-    { label: 'Contact & Sizing', href: '#contact' },
   ];
 
   return (
@@ -55,16 +64,28 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
           {/* Navigation links */}
           <nav className="mt-6 space-y-1">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={onClose}
-                className="flex items-center justify-between px-3 py-2.5 rounded text-sm font-karla font-bold tracking-wider uppercase text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
-              >
-                <span>{link.label}</span>
-                <ArrowRight className="w-4 h-4 text-slate-400" />
-              </a>
+            {navItems.map((item) => (
+              item.page ? (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => handleLinkClick(item.page)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded text-sm font-karla font-bold tracking-wider uppercase text-slate-200 hover:text-white hover:bg-white/5 transition-colors cursor-pointer text-left"
+                >
+                  <span>{item.label}</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </button>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => handleLinkClick()}
+                  className="flex items-center justify-between px-3 py-2.5 rounded text-sm font-karla font-bold tracking-wider uppercase text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  <span>{item.label}</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </a>
+              )
             ))}
           </nav>
 

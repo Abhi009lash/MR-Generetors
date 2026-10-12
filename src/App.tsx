@@ -10,6 +10,7 @@ import { WhyChooseUsSection } from './features/why-us/WhyChooseUsSection';
 import { EnterpriseClientsSection } from './features/clients/EnterpriseClientsSection';
 import { TestimonialsSection } from './features/testimonials/TestimonialsSection';
 import { ContactSection } from './features/contact/ContactSection';
+import { ContactPage } from './features/contact/ContactPage';
 import { Footer } from './features/layout/Footer';
 import { QuoteModal } from './features/quote/QuoteModal';
 import { BrochureModal } from './features/quote/BrochureModal';
@@ -18,11 +19,16 @@ import { Phone, MessageSquare } from 'lucide-react';
 import { APP_CONFIG } from './core/config';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('about');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'contact'>('contact');
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+
+  const handleNavigate = (page: 'home' | 'about' | 'contact') => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleOpenQuoteModal = (modelName?: string, capacity?: string) => {
     if (modelName) {
@@ -61,7 +67,7 @@ export const App: React.FC = () => {
       {/* Main sticky navigation header */}
       <Navbar
         currentPage={currentPage}
-        onNavigate={(page) => setCurrentPage(page)}
+        onNavigate={handleNavigate}
         onOpenQuoteModal={() => handleOpenQuoteModal()}
       />
 
@@ -71,7 +77,13 @@ export const App: React.FC = () => {
           <AboutPage
             onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
             onOpenQuoteModal={() => handleOpenQuoteModal()}
-            onNavigateHome={() => setCurrentPage('home')}
+            onNavigateHome={() => handleNavigate('home')}
+          />
+        ) : currentPage === 'contact' ? (
+          /* Dedicated Contact Us Page matching Figma screen and media_1791826383802_fd1feea7.png */
+          <ContactPage
+            onNavigateHome={() => handleNavigate('home')}
+            onOpenQuoteModal={() => handleOpenQuoteModal()}
           />
         ) : (
           /* Home Screen */
@@ -107,7 +119,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <Footer onNavigate={(page) => setCurrentPage(page)} />
+      <Footer onNavigate={handleNavigate} />
 
       {/* Global Modals */}
       <QuoteModal

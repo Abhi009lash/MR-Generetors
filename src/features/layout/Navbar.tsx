@@ -5,8 +5,8 @@ import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about';
-  onNavigate: (page: 'home' | 'about') => void;
+  currentPage: 'home' | 'about' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -91,12 +91,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               Clients &amp; Portfolio
             </a>
 
-            <a
-              href="#contact"
-              className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
+            <button
+              type="button"
+              onClick={() => onNavigate('contact')}
+              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'contact'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
             >
               Contact Us
-            </a>
+            </button>
           </nav>
 
           {/* Right Action: Get Instant Quote & User Profile */}
@@ -139,6 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           setIsMobileMenuOpen(false);
           onOpenQuoteModal();
         }}
+        onNavigate={onNavigate}
       />
     </>
   );

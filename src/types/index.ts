@@ -55,3 +55,21 @@ export interface ApiResponse<T> {
   data?: T;
   message: string;
 }
+
+export interface ContactSubmissionPayload {
+  fullNameAndDesignation: string;
+  corporateEmail: string;
+  mobileNumber: string;
+  requirementClassification: string;
+  preferredEnginePlatform?: string;
+  siteLocationAndLoadSpecs?: string;
+  whatsappPdfOptIn: boolean;
+}
+
+export interface ContactSubmissionResult {
+  success: boolean;
+  referenceId: string;
+  message: string;
+  timestamp: string;
+  previewUrl?: string;
+}

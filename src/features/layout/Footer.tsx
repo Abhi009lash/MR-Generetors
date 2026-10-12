@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about') => void;
+  onNavigate?: (page: 'home' | 'about' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
@@ -118,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => onNavigate && onNavigate('about')}
-                  className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white"
+                  className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   About Us
                 </button>
@@ -144,9 +144,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">
+                <button
+                  type="button"
+                  onClick={() => onNavigate && onNavigate('contact')}
+                  className="hover:text-white transition-colors cursor-pointer text-left font-bold text-white"
+                >
                   Contact Us
-                </a>
+                </button>
               </li>
             </ul>
           </div>
