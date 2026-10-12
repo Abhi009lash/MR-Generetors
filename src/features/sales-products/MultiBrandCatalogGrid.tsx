@@ -6,6 +6,7 @@ interface MultiBrandCatalogGridProps {
   onNavigateToLeypower?: () => void;
   onNavigateToTata?: () => void;
   onNavigateToCummins?: () => void;
+  onNavigateToEicher?: () => void;
 }
 
 interface BrandCardItem {
@@ -93,6 +94,7 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
   onNavigateToLeypower,
   onNavigateToTata,
   onNavigateToCummins,
+  onNavigateToEicher,
 }) => {
   return (
     <section className="bg-[#EFF4FF] py-14 border-t border-[#D6E4FF] select-none">
@@ -120,7 +122,8 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
 
             const isTata = b.id === 'tata' || b.name === 'TATA';
             const isCummins = b.id === 'cummins' || b.name === 'CUMMINS';
-            const isInteractive = isAshokLeyland || isTata || isCummins;
+            const isEicher = b.id === 'eicher' || b.name === 'EICHER';
+            const isInteractive = isAshokLeyland || isTata || isCummins || isEicher;
 
             return (
               <div
@@ -132,6 +135,8 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                     onNavigateToLeypower();
                   } else if (isCummins && onNavigateToCummins) {
                     onNavigateToCummins();
+                  } else if (isEicher && onNavigateToEicher) {
+                    onNavigateToEicher();
                   }
                 }}
                 className={`bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 transition-all ${
@@ -190,6 +195,8 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                          onNavigateToLeypower();
                        } else if (isCummins && onNavigateToCummins) {
                          onNavigateToCummins();
+                       } else if (isEicher && onNavigateToEicher) {
+                         onNavigateToEicher();
                        } else {
                          onSelectBrand(b.name, b.kvaRange);
                        }

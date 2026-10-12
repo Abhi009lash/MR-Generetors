@@ -32,6 +32,7 @@ import rentalCommercialSkidImg from './rental_commercial_skid_1791834218650.jpg'
 import rentalIndustrialHeavyImg from './rental_industrial_heavy_1791834250067.jpg';
 
 import cumminsDgHeroImg from './cummins_dg_set_hero.png';
+import eicherDgHeroImg from './eicher_dg_set_hero.png';
 
 export {
   aboutEcosystemImg,
@@ -50,6 +51,7 @@ export {
   sparesWarehouseImg,
   tataDgHeroImg,
   cumminsDgHeroImg,
+  eicherDgHeroImg,
   sparesHeroEngineImg,
   sparesFiltrationImg,
   sparesCoolingImg,

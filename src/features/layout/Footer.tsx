@@ -3,12 +3,12 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'cummins' | 'eicher' | 'services' | 'spares' | 'rentals' | 'blog' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const oemEngines = [
-    'Cummins', 'Kirloskar', 'Tata Motors', 'Ashok Leyland', 'Mahindra',
+    'Cummins', 'Eicher Engines', 'Kirloskar', 'Tata Motors', 'Ashok Leyland', 'Mahindra',
     'Caterpillar', 'Perkins', 'Volvo Penta', 'Baudouin', 'Scania',
   ];
 
@@ -125,6 +125,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button type="button" onClick={() => onNavigate?.('tata')} className="hover:text-white transition-colors cursor-pointer text-left text-blue-400 font-bold">
                   Tata Diesel Generators
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('eicher')} className="hover:text-white transition-colors cursor-pointer text-left text-red-400 font-bold">
+                  Eicher Diesel Generators
                 </button>
               </li>
               <li>

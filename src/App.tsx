@@ -15,6 +15,7 @@ import { SalesProductsPage } from './features/sales-products/SalesProductsPage';
 import { LeypowerPage } from './features/leypower/LeypowerPage';
 import { TataGensetsPage } from './features/tata/TataGensetsPage';
 import { CumminsPage } from './features/cummins/CumminsPage';
+import { EicherPage } from './features/eicher/EicherPage';
 import { ServicesPage } from './features/services/ServicesPage';
 import { SparesPage } from './features/spares/SparesPage';
 import { BlogPage } from './features/blog/BlogPage';
@@ -33,6 +34,7 @@ export type PageId =
   | 'leypower'
   | 'tata'
   | 'cummins'
+  | 'eicher'
   | 'services'
   | 'spares'
   | 'rentals'
@@ -75,6 +77,10 @@ export const App: React.FC = () => {
     }
     if (brand.id === 'cummins' || brand.name.toLowerCase().includes('cummins')) {
       handleNavigate('cummins');
+      return;
+    }
+    if (brand.id === 'eicher' || brand.name.toLowerCase().includes('eicher')) {
+      handleNavigate('eicher');
       return;
     }
     setSelectedProduct(null);
@@ -120,6 +126,7 @@ export const App: React.FC = () => {
             onNavigateToLeypower={() => handleNavigate('leypower')}
             onNavigateToTata={() => handleNavigate('tata')}
             onNavigateToCummins={() => handleNavigate('cummins')}
+            onNavigateToEicher={() => handleNavigate('eicher')}
           />
         ) : currentPage === 'leypower' ? (
           /* Dedicated Ashok Leyland LEYPOWER Generators Page */
@@ -140,6 +147,14 @@ export const App: React.FC = () => {
         ) : currentPage === 'cummins' ? (
           /* Dedicated Cummins Diesel Generators Page */
           <CumminsPage
+            onNavigateHome={() => handleNavigate('home')}
+            onNavigateProducts={() => handleNavigate('products')}
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onOpenBrochureModal={() => setIsBrochureModalOpen(true)}
+          />
+        ) : currentPage === 'eicher' ? (
+          /* Dedicated Eicher Diesel Generators Page matching image 7 */
+          <EicherPage
             onNavigateHome={() => handleNavigate('home')}
             onNavigateProducts={() => handleNavigate('products')}
             onOpenQuoteModal={handleOpenQuoteModal}
