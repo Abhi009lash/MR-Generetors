@@ -10,6 +10,9 @@ import mrGeneratorsLogo from './MR-Generators_Logo-R_i2_Final_PNG-1024x642.png';
 import screenImg from './screen.png';
 import greavesCutoutImg from './greaves_cpcb_iv_cutout.png';
 import leypowerGenImg from './leypower_generator.png';
+import serviceVanImg from './service_diagnostic_van.png';
+import sparesWarehouseImg from './spares_warehouse_depot.jpg';
+import tataDgHeroImg from './tata_dg_set_hero.png';
 
 export {
   aboutEcosystemImg,
@@ -24,4 +27,7 @@ export {
   screenImg,
   greavesCutoutImg,
   leypowerGenImg,
+  serviceVanImg,
+  sparesWarehouseImg,
+  tataDgHeroImg,
 };

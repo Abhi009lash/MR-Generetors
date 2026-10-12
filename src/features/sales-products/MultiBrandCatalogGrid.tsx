@@ -4,6 +4,7 @@ import { ArrowRight, Check } from 'lucide-react';
 interface MultiBrandCatalogGridProps {
   onSelectBrand: (brandName: string, kvaRange: string) => void;
   onNavigateToLeypower?: () => void;
+  onNavigateToTata?: () => void;
 }
 
 interface BrandCardItem {
@@ -89,6 +90,7 @@ const BRANDS_LIST: BrandCardItem[] = [
 export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
   onSelectBrand,
   onNavigateToLeypower,
+  onNavigateToTata,
 }) => {
   return (
     <section className="bg-[#EFF4FF] py-14 border-t border-[#D6E4FF] select-none">
@@ -114,16 +116,21 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
               b.id === 'leypower' ||
               b.name === 'ASHOK LEYLAND';
 
+            const isTata = b.id === 'tata' || b.name === 'TATA';
+            const isInteractive = isAshokLeyland || isTata;
+
             return (
               <div
                 key={b.id}
                 onClick={() => {
-                  if (isAshokLeyland && onNavigateToLeypower) {
+                  if (isTata && onNavigateToTata) {
+                    onNavigateToTata();
+                  } else if (isAshokLeyland && onNavigateToLeypower) {
                     onNavigateToLeypower();
                   }
                 }}
                 className={`bg-white rounded-[4px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between space-y-4 transition-all ${
-                  isAshokLeyland
+                  isInteractive
                     ? 'cursor-pointer hover:border-[#00163D] hover:shadow-md ring-1 ring-[#385BAB]/10'
                     : 'hover:border-[#385BAB] hover:shadow-sm'
                 }`}
@@ -172,7 +179,9 @@ export const MultiBrandCatalogGrid: React.FC<MultiBrandCatalogGridProps> = ({
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (isAshokLeyland && onNavigateToLeypower) {
+                      if (isTata && onNavigateToTata) {
+                        onNavigateToTata();
+                      } else if (isAshokLeyland && onNavigateToLeypower) {
                         onNavigateToLeypower();
                       } else {
                         onSelectBrand(b.name, b.kvaRange);

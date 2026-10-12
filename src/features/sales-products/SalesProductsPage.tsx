@@ -11,12 +11,14 @@ interface SalesProductsPageProps {
   onOpenQuoteModal: (modelName?: string, capacity?: string) => void;
   onOpenBrochureModal: () => void;
   onNavigateToLeypower?: () => void;
+  onNavigateToTata?: () => void;
 }
 
 export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
   onOpenQuoteModal,
   onOpenBrochureModal,
   onNavigateToLeypower,
+  onNavigateToTata,
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     kvaRange: 'all',
@@ -67,6 +69,7 @@ export const SalesProductsPage: React.FC<SalesProductsPageProps> = ({
           onOpenQuoteModal(`${brandName} DG Set`, kvaRange)
         }
         onNavigateToLeypower={onNavigateToLeypower}
+        onNavigateToTata={onNavigateToTata}
       />
 
       {/* 6. Turnkey 4-Step Engineering Walkthrough */}

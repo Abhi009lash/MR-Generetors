@@ -3,21 +3,13 @@ import { Phone, Mail, MapPin, ShieldCheck, Clock, MessageSquare, Check } from 'l
 import { APP_CONFIG } from '../../core/config';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'contact') => void;
+  onNavigate?: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const oemEngines = [
-    'Cummins',
-    'Kirloskar',
-    'Tata Motors',
-    'Ashok Leyland',
-    'Mahindra',
-    'Caterpillar',
-    'Perkins',
-    'Volvo Penta',
-    'Baudouin',
-    'Scania',
+    'Cummins', 'Kirloskar', 'Tata Motors', 'Ashok Leyland', 'Mahindra',
+    'Caterpillar', 'Perkins', 'Volvo Penta', 'Baudouin', 'Scania',
   ];
 
   return (
@@ -142,14 +134,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </button>
               </li>
               <li>
-                <a href="#why-us" className="hover:text-white transition-colors">
+                <button
+                  type="button"
+                  onClick={() => onNavigate?.('services')}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
                   Services &amp; Maintenance
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#why-us" className="hover:text-white transition-colors">
+                <button
+                  type="button"
+                  onClick={() => onNavigate?.('services')}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
                   Comprehensive AMC
-                </a>
+                </button>
               </li>
               <li>
                 <a href="#testimonials" className="hover:text-white transition-colors">

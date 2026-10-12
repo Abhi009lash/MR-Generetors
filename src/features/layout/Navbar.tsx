@@ -5,8 +5,8 @@ import { mrGeneratorsLogo } from '../../assets/images';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
-  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'contact';
-  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'contact') => void;
+  currentPage: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact';
+  onNavigate: (page: 'home' | 'about' | 'products' | 'leypower' | 'tata' | 'services' | 'contact') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -79,12 +79,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               Sales &amp; Products
             </button>
 
-            <a
-              href="#why-us"
-              className="px-2 py-1.5 text-slate-700 hover:text-[#00163D] font-karla font-medium text-sm transition-colors"
+            <button
+              type="button"
+              onClick={() => onNavigate('services')}
+              className={`px-4 py-1.5 rounded-md font-karla text-sm transition-colors cursor-pointer ${
+                currentPage === 'services'
+                  ? 'bg-[#DFE9FB] text-[#00163D] font-bold shadow-xs'
+                  : 'text-slate-700 hover:text-[#00163D] font-medium'
+              }`}
             >
               Services &amp; AMC
-            </a>
+            </button>
 
             <a
               href="#testimonials"
